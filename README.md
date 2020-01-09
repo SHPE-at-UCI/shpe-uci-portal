@@ -1,2 +1,2 @@
-# clubs.uci.edu-shpe-
+# clubs.uci.edu.shpe
 Public facing web platform for SHPE at UCI
