@@ -73,6 +73,12 @@ You’ll see output similar to this:
 * Debugger PIN: 855-212-761
 ```
 
+Stop Virtual Environment
+```
+$ deactivate
+```
+
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
