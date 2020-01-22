@@ -79,9 +79,36 @@ $ deactivate
 ```
 
 
-## Contributing
+### Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+We use a feature branch workflow.
+
+Step 1: Create a new branch
+
+```
+git checkout -b <milestone_milestone#_issue>
+```
+
+Step 2: Update, add, commit, and push changes
+
+```
+git status
+git add <some-file> or git add .
+git commit
+```
+
+Step 3: Push feature branch to remote
+
+```
+git push -u origin new-feature
+Step 4: Create a pull request
+```
+
+### Development
+
+Create a pull request(PR) on the master branch.
+Once the PR is approved, the owner of the PR merges the pull request into master branch.
+In the future we will have continuous deployments. 
 
 ## License
 
