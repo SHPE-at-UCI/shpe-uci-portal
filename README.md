@@ -4,7 +4,7 @@ We will be using Flasks project tutorial found [here](http://flask.palletsprojec
 
 ## Installation
 
-#### [Python3](https://pip.pypa.io/en/stable/) & [pip](https://pip.pypa.io/en/stable/)
+#### [Python3](https://www.python.org/downloads/) & [pip](https://pip.pypa.io/en/stable/)
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the dependencies of the project.
 
