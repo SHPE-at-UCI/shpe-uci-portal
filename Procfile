@@ -1,1 +1,1 @@
-web: gunicorn flaskr:__init__.py;
+gunicorn "flaskr:create_app('production')"

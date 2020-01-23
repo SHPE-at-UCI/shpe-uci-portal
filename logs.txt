@@ -1,55 +1,3 @@
-2020-01-23T05:03:06.875156+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 245, in handle_chld
-2020-01-23T05:03:06.875334+00:00 app[web.1]: self.reap_workers()
-2020-01-23T05:03:06.875340+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 528, in reap_workers
-2020-01-23T05:03:06.875582+00:00 app[web.1]: raise HaltServer(reason, self.APP_LOAD_ERROR)
-2020-01-23T05:03:06.875630+00:00 app[web.1]: gunicorn.errors.HaltServer: <HaltServer 'App failed to load.' 4>
-2020-01-23T05:03:06.875634+00:00 app[web.1]: 
-2020-01-23T05:03:06.875636+00:00 app[web.1]: During handling of the above exception, another exception occurred:
-2020-01-23T05:03:06.875638+00:00 app[web.1]: 
-2020-01-23T05:03:06.875644+00:00 app[web.1]: Traceback (most recent call last):
-2020-01-23T05:03:06.875648+00:00 app[web.1]: File "/app/.heroku/python/bin/gunicorn", line 11, in <module>
-2020-01-23T05:03:06.875778+00:00 app[web.1]: sys.exit(run())
-2020-01-23T05:03:06.875784+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 61, in run
-2020-01-23T05:03:06.875954+00:00 app[web.1]: WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
-2020-01-23T05:03:06.875958+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/base.py", line 223, in run
-2020-01-23T05:03:06.876131+00:00 app[web.1]: super(Application, self).run()
-2020-01-23T05:03:06.876134+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/base.py", line 72, in run
-2020-01-23T05:03:06.876272+00:00 app[web.1]: Arbiter(self).run()
-2020-01-23T05:03:06.876275+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 232, in run
-2020-01-23T05:03:06.876443+00:00 app[web.1]: self.halt(reason=inst.reason, exit_status=inst.exit_status)
-2020-01-23T05:03:06.876447+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 345, in halt
-2020-01-23T05:03:06.876649+00:00 app[web.1]: self.stop()
-2020-01-23T05:03:06.876652+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 393, in stop
-2020-01-23T05:03:06.876862+00:00 app[web.1]: time.sleep(0.1)
-2020-01-23T05:03:06.876865+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 245, in handle_chld
-2020-01-23T05:03:06.877035+00:00 app[web.1]: self.reap_workers()
-2020-01-23T05:03:06.877041+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 528, in reap_workers
-2020-01-23T05:03:06.877283+00:00 app[web.1]: raise HaltServer(reason, self.APP_LOAD_ERROR)
-2020-01-23T05:03:06.877311+00:00 app[web.1]: gunicorn.errors.HaltServer: <HaltServer 'App failed to load.' 4>
-2020-01-23T05:03:06.984704+00:00 heroku[web.1]: State changed from starting to crashed
-2020-01-23T05:03:06.961338+00:00 heroku[web.1]: Process exited with status 1
-2020-01-23T05:03:08.000000+00:00 app[api]: Build succeeded
-2020-01-23T05:03:13.917831+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=shpeportal.herokuapp.com request_id=a49b5d1f-cc6f-46c8-bc70-aec07a438a32 fwd="169.234.58.174" dyno= connect= service= status=503 bytes= protocol=https
-2020-01-23T05:03:14.743781+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=shpeportal.herokuapp.com request_id=9ed26016-76e8-4d28-80b2-74bb28c12aae fwd="169.234.58.174" dyno= connect= service= status=503 bytes= protocol=https
-2020-01-23T05:08:33.000000+00:00 app[api]: Build started by user tech.shpeuci@gmail.com
-2020-01-23T05:09:03.337465+00:00 heroku[web.1]: State changed from crashed to starting
-2020-01-23T05:09:03.119888+00:00 app[api]: Deploy ee5abb04 by user tech.shpeuci@gmail.com
-2020-01-23T05:09:03.119888+00:00 app[api]: Release v6 created by user tech.shpeuci@gmail.com
-2020-01-23T05:09:06.358331+00:00 heroku[web.1]: Starting process with command `gunicorn flaskr`
-2020-01-23T05:09:08.912165+00:00 heroku[web.1]: Process exited with status 1
-2020-01-23T05:09:08.936914+00:00 heroku[web.1]: State changed from starting to crashed
-2020-01-23T05:09:08.940105+00:00 heroku[web.1]: State changed from crashed to starting
-2020-01-23T05:09:08.549675+00:00 app[web.1]: [2020-01-23 05:09:08 +0000] [4] [INFO] Starting gunicorn 19.9.0
-2020-01-23T05:09:08.550559+00:00 app[web.1]: [2020-01-23 05:09:08 +0000] [4] [INFO] Listening at: http://0.0.0.0:49402 (4)
-2020-01-23T05:09:08.550752+00:00 app[web.1]: [2020-01-23 05:09:08 +0000] [4] [INFO] Using worker: sync
-2020-01-23T05:09:08.554972+00:00 app[web.1]: [2020-01-23 05:09:08 +0000] [10] [INFO] Booting worker with pid: 10
-2020-01-23T05:09:08.613545+00:00 app[web.1]: [2020-01-23 05:09:08 +0000] [11] [INFO] Booting worker with pid: 11
-2020-01-23T05:09:08.694163+00:00 app[web.1]: Failed to find application object 'application' in 'flaskr'
-2020-01-23T05:09:08.694919+00:00 app[web.1]: [2020-01-23 05:09:08 +0000] [10] [INFO] Worker exiting (pid: 10)
-2020-01-23T05:09:08.790436+00:00 app[web.1]: Failed to find application object 'application' in 'flaskr'
-2020-01-23T05:09:08.791318+00:00 app[web.1]: [2020-01-23 05:09:08 +0000] [11] [INFO] Worker exiting (pid: 11)
-2020-01-23T05:09:08.840002+00:00 app[web.1]: Traceback (most recent call last):
-2020-01-23T05:09:08.840041+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 210, in run
 2020-01-23T05:09:08.840338+00:00 app[web.1]: self.sleep()
 2020-01-23T05:09:08.840342+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 360, in sleep
 2020-01-23T05:09:08.840556+00:00 app[web.1]: ready = select.select([self.PIPE[0]], [], [], 1.0)
@@ -98,3 +46,55 @@
 2020-01-23T05:09:14.461410+00:00 heroku[web.1]: Process exited with status 4
 2020-01-23T05:09:33.176016+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=shpeportal.herokuapp.com request_id=38bd4804-1624-47ba-8d1f-d4a1aaa3e0fd fwd="169.234.58.174" dyno= connect= service= status=503 bytes= protocol=https
 2020-01-23T05:09:33.980426+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=shpeportal.herokuapp.com request_id=1b965206-d751-4859-a872-68f9a9cbef4e fwd="169.234.58.174" dyno= connect= service= status=503 bytes= protocol=https
+2020-01-23T05:10:38.000000+00:00 app[api]: Build started by user tech.shpeuci@gmail.com
+2020-01-23T05:11:08.531312+00:00 heroku[web.1]: State changed from crashed to starting
+2020-01-23T05:11:08.344187+00:00 app[api]: Deploy 86830320 by user tech.shpeuci@gmail.com
+2020-01-23T05:11:08.344187+00:00 app[api]: Release v7 created by user tech.shpeuci@gmail.com
+2020-01-23T05:11:11.332510+00:00 heroku[web.1]: Starting process with command `gunicorn flaskr:__init__.py;`
+2020-01-23T05:11:15.146691+00:00 app[web.1]: [2020-01-23 05:11:15 +0000] [4] [INFO] Starting gunicorn 19.9.0
+2020-01-23T05:11:15.147267+00:00 app[web.1]: [2020-01-23 05:11:15 +0000] [4] [INFO] Listening at: http://0.0.0.0:35620 (4)
+2020-01-23T05:11:15.147396+00:00 app[web.1]: [2020-01-23 05:11:15 +0000] [4] [INFO] Using worker: sync
+2020-01-23T05:11:15.151637+00:00 app[web.1]: [2020-01-23 05:11:15 +0000] [10] [INFO] Booting worker with pid: 10
+2020-01-23T05:11:15.250986+00:00 app[web.1]: [2020-01-23 05:11:15 +0000] [11] [INFO] Booting worker with pid: 11
+2020-01-23T05:11:15.323630+00:00 app[web.1]: Failed to find application object '__init__.py' in 'flaskr'
+2020-01-23T05:11:15.324580+00:00 app[web.1]: [2020-01-23 05:11:15 +0000] [10] [INFO] Worker exiting (pid: 10)
+2020-01-23T05:11:15.587674+00:00 heroku[web.1]: State changed from starting to crashed
+2020-01-23T05:11:15.435539+00:00 app[web.1]: Failed to find application object '__init__.py' in 'flaskr'
+2020-01-23T05:11:15.436113+00:00 app[web.1]: [2020-01-23 05:11:15 +0000] [11] [INFO] Worker exiting (pid: 11)
+2020-01-23T05:11:15.480670+00:00 app[web.1]: Traceback (most recent call last):
+2020-01-23T05:11:15.480678+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 210, in run
+2020-01-23T05:11:15.481119+00:00 app[web.1]: self.sleep()
+2020-01-23T05:11:15.481141+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 360, in sleep
+2020-01-23T05:11:15.481512+00:00 app[web.1]: ready = select.select([self.PIPE[0]], [], [], 1.0)
+2020-01-23T05:11:15.481534+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 245, in handle_chld
+2020-01-23T05:11:15.481813+00:00 app[web.1]: self.reap_workers()
+2020-01-23T05:11:15.481842+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 528, in reap_workers
+2020-01-23T05:11:15.482281+00:00 app[web.1]: raise HaltServer(reason, self.APP_LOAD_ERROR)
+2020-01-23T05:11:15.482339+00:00 app[web.1]: gunicorn.errors.HaltServer: <HaltServer 'App failed to load.' 4>
+2020-01-23T05:11:15.482359+00:00 app[web.1]: 
+2020-01-23T05:11:15.482360+00:00 app[web.1]: During handling of the above exception, another exception occurred:
+2020-01-23T05:11:15.482362+00:00 app[web.1]: 
+2020-01-23T05:11:15.482365+00:00 app[web.1]: Traceback (most recent call last):
+2020-01-23T05:11:15.482390+00:00 app[web.1]: File "/app/.heroku/python/bin/gunicorn", line 11, in <module>
+2020-01-23T05:11:15.482562+00:00 app[web.1]: sys.exit(run())
+2020-01-23T05:11:15.482598+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 61, in run
+2020-01-23T05:11:15.482816+00:00 app[web.1]: WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+2020-01-23T05:11:15.482819+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/base.py", line 223, in run
+2020-01-23T05:11:15.483055+00:00 app[web.1]: super(Application, self).run()
+2020-01-23T05:11:15.483060+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/app/base.py", line 72, in run
+2020-01-23T05:11:15.483259+00:00 app[web.1]: Arbiter(self).run()
+2020-01-23T05:11:15.483280+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 232, in run
+2020-01-23T05:11:15.483580+00:00 app[web.1]: self.halt(reason=inst.reason, exit_status=inst.exit_status)
+2020-01-23T05:11:15.483585+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 345, in halt
+2020-01-23T05:11:15.483935+00:00 app[web.1]: self.stop()
+2020-01-23T05:11:15.483956+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 393, in stop
+2020-01-23T05:11:15.484321+00:00 app[web.1]: time.sleep(0.1)
+2020-01-23T05:11:15.484325+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 245, in handle_chld
+2020-01-23T05:11:15.484603+00:00 app[web.1]: self.reap_workers()
+2020-01-23T05:11:15.484608+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.6/site-packages/gunicorn/arbiter.py", line 528, in reap_workers
+2020-01-23T05:11:15.485029+00:00 app[web.1]: raise HaltServer(reason, self.APP_LOAD_ERROR)
+2020-01-23T05:11:15.485062+00:00 app[web.1]: gunicorn.errors.HaltServer: <HaltServer 'App failed to load.' 4>
+2020-01-23T05:11:15.571801+00:00 heroku[web.1]: Process exited with status 1
+2020-01-23T05:11:16.000000+00:00 app[api]: Build succeeded
+2020-01-23T05:11:52.053794+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=shpeportal.herokuapp.com request_id=b366de32-34aa-4813-a2a1-6a0dd6da583a fwd="169.234.58.174" dyno= connect= service= status=503 bytes= protocol=https
+2020-01-23T05:11:52.817738+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=shpeportal.herokuapp.com request_id=aac02e2d-7202-4520-9bd3-495582bdb970 fwd="169.234.58.174" dyno= connect= service= status=503 bytes= protocol=https
