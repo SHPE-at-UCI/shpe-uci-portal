@@ -13,8 +13,6 @@ Clone this project.
 ```bash
 $ git clone https://github.com/SHPE-at-UCI/clubs.uci.edu.shpe.git
 $ cd clubs.uci.edu.shpe
-$ python3 -m venv venv
-$ . venv/bin/activate
 ```
 
 Create a virtualenv and activate it:
