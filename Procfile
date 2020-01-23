@@ -1,1 +1,1 @@
-gunicorn app:flaskr
+gunicorn flaskr:create_app()
