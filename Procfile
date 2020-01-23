@@ -1,1 +1,1 @@
-gunicorn flaskr:create_app('production')
+gunicorn app:flaskr
