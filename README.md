@@ -11,7 +11,7 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the dep
 Clone this project.
 
 ```bash
-$ clone https://github.com/SHPE-at-UCI/clubs.uci.edu.shpe.git
+$ git clone https://github.com/SHPE-at-UCI/clubs.uci.edu.shpe.git
 $ cd clubs.uci.edu.shpe
 $ python3 -m venv venv
 $ . venv/bin/activate
