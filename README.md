@@ -4,17 +4,15 @@ We will be using Flasks project tutorial found [here](http://flask.palletsprojec
 
 ## Installation
 
-#### [Python3](https://pip.pypa.io/en/stable/) & [pip](https://pip.pypa.io/en/stable/)
+#### [Python3](https://www.python.org/downloads/) & [pip](https://pip.pypa.io/en/stable/)
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the dependencies of the project.
 
 Clone this project.
 
 ```bash
-$ clone https://github.com/SHPE-at-UCI/clubs.uci.edu.shpe.git
+$ git clone https://github.com/SHPE-at-UCI/clubs.uci.edu.shpe.git
 $ cd clubs.uci.edu.shpe
-$ python3 -m venv venv
-$ . venv/bin/activate
 ```
 
 Create a virtualenv and activate it:
@@ -73,9 +71,42 @@ You’ll see output similar to this:
 * Debugger PIN: 855-212-761
 ```
 
-## Contributing
+Stop Virtual Environment
+```
+$ deactivate
+```
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+### Contributing
+
+We use a feature branch workflow.
+
+Step 1: Create a new branch
+
+```
+git checkout -b <milestone_milestone#_issue>
+```
+
+Step 2: Update, add, commit, and push changes
+
+```
+git status
+git add <some-file> or git add .
+git commit
+```
+
+Step 3: Push feature branch to remote
+
+```
+git push -u origin new-feature
+Step 4: Create a pull request
+```
+
+### Development
+
+Create a pull request(PR) on the master branch.
+Once the PR is approved, the owner of the PR merges the pull request into master branch.
+In the future we will have continuous deployments. 
 
 ## License
 
