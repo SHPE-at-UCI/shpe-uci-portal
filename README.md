@@ -29,34 +29,15 @@ $ py -3 -m venv venv
 $ venv\Scripts\activate.bat
 ```
 
-Install Flaskr:
+Install Flask:
 
 ```
 $ pip install -e .
 ```
 
-For Linux and Mac:
-
+Run Flask
 ```
-$ export FLASK_APP=flaskr
-$ export FLASK_ENV=development
-$ flask run
-```
-
-For Windows cmd, use set instead of export:
-
-```
-> set FLASK_APP=flaskr
-> set FLASK_ENV=development
-> flask run
-```
-
-For Windows PowerShell, use \$env: instead of export:
-
-```
-> $env:FLASK_APP = "flaskr"
-> $env:FLASK_ENV = "development"
-> flask run
+./runapp.sh
 ```
 
 You’ll see output similar to this:
