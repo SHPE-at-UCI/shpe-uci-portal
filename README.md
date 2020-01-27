@@ -65,7 +65,8 @@ We use a feature branch workflow.
 Step 1: Create a new branch
 
 ```
-git checkout -b <milestone_milestone#_issue>
+git checkout -b <feature_milestone#>
+Examples: git checkout -b Login_Feature_1.1
 ```
 
 Step 2: Update, add, commit, and push changes
