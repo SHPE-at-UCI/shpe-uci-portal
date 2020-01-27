@@ -93,7 +93,7 @@ In the future we will have continuous deployments.
 ## Tutorial
 
 Made by Guillermo Hernandez - SHPE Technical Program Manager
-[Link]()
+[Link](https://www.youtube.com/watch?v=T0Ml5WnQbJY&feature=youtu.be)
 
 ## License
 
