@@ -72,10 +72,10 @@ You’ll see output similar to this:
 ```
 
 Stop Virtual Environment
+
 ```
 $ deactivate
 ```
-
 
 ### Contributing
 
@@ -102,11 +102,16 @@ git push -u origin new-feature
 Step 4: Create a pull request
 ```
 
-### Development
+## Development
 
 Create a pull request(PR) on the master branch.
 Once the PR is approved, the owner of the PR merges the pull request into master branch.
-In the future we will have continuous deployments. 
+In the future we will have continuous deployments.
+
+## Tutorial
+
+Made by Guillermo Hernandez - SHPE Technical Program Manager
+[Link]()
 
 ## License
 
