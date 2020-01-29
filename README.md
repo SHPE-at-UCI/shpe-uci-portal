@@ -32,7 +32,7 @@ $ venv\Scripts\activate.bat
 Install Flask:
 
 ```
-$ pip install -e .
+$ pip3 install -r requirements.txt
 ```
 
 Run Flask
