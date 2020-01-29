@@ -33,6 +33,6 @@ def create_app(test_config=None):
     # a simple page that says hello
     @app.route('/')
     def hello():
-        return render_template('home.html')
+        return render_template('Login_Page.html')
 
     return app
