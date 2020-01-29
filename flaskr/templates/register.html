@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block header %}
+<!-- This should always go here -->
+<h1>{% block title %}<center>Registration Page</center>{% endblock %}</h1>
+<!-- You can change Register to anything else.-->
+{% endblock %} {% block content %}
+<!-- All your body content goes here! -->
+<center>
+  <div class="container">
+    <form method="post">
+      <label for="username">Username</label>
+      <input name="username" id="username" required>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required>
+    </form>
+  </div>
+</center>
+{% endblock %}
