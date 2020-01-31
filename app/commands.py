@@ -5,7 +5,7 @@ from .extensions import db
 from .models import User
 
 
-@click.command()
+@click.command(name='create_tables')
 @with_appcontext
 def create_tables():
     db.create_all()
