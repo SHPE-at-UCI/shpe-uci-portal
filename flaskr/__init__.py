@@ -35,6 +35,8 @@ def create_app(test_config=None):
     def hello():
         return render_template('home.html')
 
+    # Page that a user gets redirected to after logging in
+    # or registering
     @app.route('/dashboard')
     def dashboard():
         return render_template('dashboard.html')
