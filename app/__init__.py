@@ -30,4 +30,8 @@ def create_app(config_file='settings.py'):
     def hello():
         return render_template('home.html')
 
+    @app.route('/dashboard')
+    def dashboard():
+        return render_template('dashboard.html')
+
     return app
