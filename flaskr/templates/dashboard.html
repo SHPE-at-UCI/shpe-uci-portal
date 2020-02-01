@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+<!--Import the <head> from 'base.html'-->
+{% block header %}
+    <title>Dashboard</title>
+    {% block title %}
+    {% endblock %}
+{% endblock %}
+
+{% block content %}
+<container>
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">SHPE Portal</a>
+        <div class="dropdown">
+            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                Hello Member
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Portfolio</a>
+                <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="#">Logout</a>
+            </div>
+        </div>
+    </nav>
+</container>
+
+
+{% endblock %}
