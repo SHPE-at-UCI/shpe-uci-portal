@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 import click
 from flask.cli import with_appcontext
 
@@ -27,12 +27,10 @@ def create_app(config_file='settings.py'):
         pass
 
     @app.route('/')
-    def hello():
-        return render_template('home.html')
+    #There is no need for a homepage. 
+    def home():
+        return redirect(url_for('auth.login'))
 
-    #register page
-    @app.route('/register')
-    def register():
-        return render_template('/auth/register.html')
+    
 
     return app

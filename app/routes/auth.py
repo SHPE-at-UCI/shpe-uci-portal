@@ -23,5 +23,16 @@ def register():
         db.session.commit()
         print(User.query.all())
 
+        #Change later to dashboard.html
+        return render_template('home.html')
+    return render_template('auth/register.html')
+
+
+@bp.route('/login', methods=('GET', 'POST'))
+def login():
+    if request.method == 'POST':
+        print("Loggin in")
+
+        #Change later to dashboard.html
         return render_template('home.html')
     return render_template('auth/register.html')
