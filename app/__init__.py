@@ -30,4 +30,9 @@ def create_app(config_file='settings.py'):
     def hello():
         return render_template('home.html')
 
+    #register page
+    @app.route('/register')
+    def register():
+        return render_template('/auth/register.html')
+
     return app
