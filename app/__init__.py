@@ -27,10 +27,16 @@ def create_app(config_file='settings.py'):
         pass
 
     @app.route('/')
-    #There is no need for a homepage. 
-    def home():
+    #There is no need for a homepage.
+    def index():
         return redirect(url_for('auth.login'))
 
-    
+    @app.route('/home')
+    def home():
+        return render_template('home.html')
+
+    @app.errorhandler(404)
+    def page_not_found(error):
+        return render_template('/error/404.html', title='404'), 404
 
     return app
