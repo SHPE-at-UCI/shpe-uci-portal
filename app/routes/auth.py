@@ -35,4 +35,4 @@ def login():
 
         #Change later to dashboard.html
         return render_template('home.html')
-    return render_template('auth/register.html')
+    return render_template('login.html')
