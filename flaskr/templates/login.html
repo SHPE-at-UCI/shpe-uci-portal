@@ -4,24 +4,18 @@
 <!-- You can change Register to anything else.-->
 {% endblock %} {% block content %}
 <!-- All your body content goes here! -->
-<div class="container">
+<div class="container" align="center">
   <form method="post">
-    <center>
     <label for="email"><b>Email</b></label>
     <input name="email" placeholder="Enter UCI email" id="email" required><br>
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter password" name="password" id="password" required><br>
     <input type="checkbox" name="remember"> Remember me
     <input type="submit" value="Log In">
-    </center>
   </form>
 </div>
-<center>
-  <div class="container">
-    <a href ="/forgot">Forgot Password?</a>
-  </div>
-  <div class="container">
+<div class="container" align="center">
+    <a href ="/forgot">Forgot Password?</a><br>
     <a href="/register"> Don't have an account? Register here</a>
-  </div>
-</center>
+</div>
 {% endblock %}
