@@ -35,6 +35,10 @@ def create_app(config_file='settings.py'):
     def home():
         return render_template('home.html')
 
+    @app.route('/dashboard')
+    def dashboard():
+        return render_template('dashboard.html')
+
     @app.errorhandler(404)
     def page_not_found(error):
         return render_template('/error/404.html', title='404'), 404
