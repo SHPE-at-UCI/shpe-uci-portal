@@ -17,14 +17,28 @@ def register():
     if request.method == 'POST':
         email = request.form['email']
         password = generate_password_hash(request.form['password'])
+        # first_name = request.form['first_name']
+        # last_name = request.form['last_name']
+        error = None
+        find_one = User.query.filter_by(email=email).first()
 
-        user = User(email=email, password=password)
-        db.session.add(user)
-        db.session.commit()
-        print(User.query.all())
+        if not email:
+            error = 'Email is required.'
+        elif not password:
+            error = 'Password is required.'
+        elif find_one is not None:
+            error = 'User {} is already registered.'.format(email)
 
-        #Change later to dashboard.html
-        return redirect(url_for('home'))
+        if error is None:
+            user = User(email=email, password=password)
+            db.session.add(user)
+            db.session.commit()
+            print(User.query.all())
+
+            return redirect(url_for('home'))
+
+        flash(error)
+        # Change later to dashboard.html
     return render_template('/auth/register.html')
 
 
@@ -32,7 +46,6 @@ def register():
 def login():
     print(request)
     if request.method == 'POST':
-
-        #Change later to dashboard.html
+        # Change later to dashboard.html
         return redirect(url_for('home'))
     return render_template('/auth/login.html')

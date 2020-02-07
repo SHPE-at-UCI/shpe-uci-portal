@@ -27,7 +27,7 @@ def create_app(config_file='settings.py'):
         pass
 
     @app.route('/')
-    #There is no need for a homepage.
+    # There is no need for a homepage.
     def index():
         return redirect(url_for('auth.login'))
 
