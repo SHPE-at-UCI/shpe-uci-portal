@@ -35,7 +35,7 @@ def register():
             db.session.commit()
             print(User.query.all())
 
-            return redirect(url_for('home'))
+            return redirect(url_for('dashboard'))
 
         flash(error)
         # Change later to dashboard.html
@@ -47,5 +47,5 @@ def login():
     print(request)
     if request.method == 'POST':
         # Change later to dashboard.html
-        return redirect(url_for('home'))
+        return redirect(url_for('dashboard'))
     return render_template('/auth/login.html')

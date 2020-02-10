@@ -1,0 +1,12 @@
+/* css specific for the dashboard.html file */
+
+/*navbar related css*/
+.navbar {
+    background-color: #57fff7;
+    box-shadow: 10px 0px 20px grey;
+}
+
+
+body {
+    background-color: whitesmoke;
+}

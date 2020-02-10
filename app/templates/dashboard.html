@@ -3,38 +3,83 @@
 {% block header %}
     <title>Dashboard</title>
     <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}"/>
     {% block title %}
     {% endblock %}
 {% endblock %}
 
 {% block content %}
 
-<container>
-    <nav class="navbar">
-        <a class="navbar-brand" href="#">SHPE Portal</a>
-        <div class="dropdown">
-            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                Hello Memo!
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Portfolio</a>
-                <a class="dropdown-item" href="#">Settings</a>
-                <a class="dropdown-item" href="#">Logout</a>
-            </div>
-        </div>
-    </nav>
-</container>
-
-<div class="container">
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text">Upload</span>
-        </div>
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="resumeUpload" onChange="updateFilename()">
-            <label class="custom-file-label" for="resumeUpload" id="resumeLabel">Choose File</label>
+<nav class="navbar sticky-top mb-4">
+    <a class="navbar-brand" href="#">SHPE Portal</a>
+    <div class="dropdown">
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+            Hello Memo!
+        </button>
+        
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Portfolio</a>
+            <a class="dropdown-item" href="#">Settings</a>
+            <a class="dropdown-item" href="#">Logout</a>
         </div>
     </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Upload</span>
+            </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="resumeUpload" onChange="updateFilename()">
+                <label class="custom-file-label" for="resumeUpload" id="resumeLabel">Choose File</label>
+            </div>
+        </div>
+
+    </div>
 </div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 {% endblock %}
