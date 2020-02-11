@@ -11,5 +11,7 @@ class User(db.Model):
     # year = db.Column(db.Integer)
     # first_registration = db.Column(db.DateTime)
 
+
+
     def __repr__(self):
         return '<User %r>' % self.email
