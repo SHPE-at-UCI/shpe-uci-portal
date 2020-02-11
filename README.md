@@ -15,10 +15,15 @@ $ git clone https://github.com/SHPE-at-UCI/clubs.uci.edu.shpe.git
 $ cd clubs.uci.edu.shpe
 ```
 
-Create a virtualenv and activate it:
+Create a virtualenv
 
 ```bash
 $ python3 -m venv venv
+```
+
+Activate the virtualenv
+
+```bash
 $ . venv/bin/activate
 ```
 
@@ -26,10 +31,10 @@ Or on Windows cmd:
 
 ```
 $ py -3 -m venv venv
-$ venv\Scripts\activate.bat
+$ . venv/Scripts/activate
 ```
 
-Install Flask:
+Install Dependencies:
 
 ```
 $ pip3 install -r requirements.txt
@@ -37,13 +42,13 @@ $ pip3 install -r requirements.txt
 
 Run Flask
 ```
-./runapp.sh
+./runapp
 ```
 
 You’ll see output similar to this:
 
 ```
-* Serving Flask app "flaskr"
+* Serving Flask app "app"
 * Environment: development
 * Debug mode: on
 * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
