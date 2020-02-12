@@ -35,7 +35,7 @@ def register():
             db.session.commit()
             print(User.query.all())
 
-            return redirect(url_for('home'))
+            return redirect(url_for('auth.login'))
 
         flash(error)
         # Change later to dashboard.html
@@ -44,8 +44,28 @@ def register():
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
-    print(request)
     if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        error = None
+        user = User.query.filter_by(email=email).first()
+
+        if not email:
+            error = 'Email is required.'
+        elif not password:
+            error = 'Password is required.'
+        elif user is None:
+            error = 'User {} is not registered.'.format(email)
+        elif not check_password_hash(user.password, password):
+            error = 'Incorrect credentials.'
+
+        flash(error)
+
+        if error is None:
+            session.clear()
+            session['user_id'] = user.id
+            return redirect(url_for('home'))
         # Change later to dashboard.html
-        return redirect(url_for('home'))
+
     return render_template('/auth/login.html')
