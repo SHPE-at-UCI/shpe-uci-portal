@@ -35,7 +35,7 @@ def register():
             db.session.commit()
             print(User.query.all())
 
-            return redirect(url_for('home'))
+            return redirect(url_for('auth.login'))
 
         flash(error)
         # Change later to dashboard.html
@@ -44,8 +44,22 @@ def register():
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
-    print(request)
     if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        error = None
+        user = User.query.filter_by(email=email).first()
+
+        if user is None or not check_password_hash(user.password, password):
+            error = 'The username and password you entered did not match our records. Please double-check and try again'
+
+        flash(error)
+
+        if error is None:
+            session.clear()
+            session['user_id'] = user.id
+            return redirect(url_for('home'))
         # Change later to dashboard.html
-        return redirect(url_for('home'))
+
     return render_template('/auth/login.html')
