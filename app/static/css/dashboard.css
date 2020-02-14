@@ -3,10 +3,22 @@
 /*navbar related css*/
 .navbar {
     background-color: #0071C5;
-    box-shadow: 10px 0px 20px grey;
+    box-shadow: 10px 0px 20px black;
+    color: gray;
 }
 
+a {
+    color: white;
+}
+
+a:hover {
+    color: red;
+}
 
 body {
+    background-color: #373F51;
+}
+
+body > div {
     background-color: whitesmoke;
 }
