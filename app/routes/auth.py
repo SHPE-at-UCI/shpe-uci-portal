@@ -51,14 +51,8 @@ def login():
         error = None
         user = User.query.filter_by(email=email).first()
 
-        if not email:
-            error = 'Email is required.'
-        elif not password:
-            error = 'Password is required.'
-        elif user is None:
-            error = 'User {} is not registered.'.format(email)
-        elif not check_password_hash(user.password, password):
-            error = 'Incorrect credentials.'
+        if user is None or not check_password_hash(user.password, password):
+            error = 'The username and password you entered did not match our records. Please double-check and try again'
 
         flash(error)
 
