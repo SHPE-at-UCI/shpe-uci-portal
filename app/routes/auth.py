@@ -35,7 +35,7 @@ def register():
             db.session.commit()
             print(User.query.all())
 
-            return redirect(url_for('auth.login'))
+            return redirect(url_for('dashboard'))
 
         flash(error)
         # Change later to dashboard.html
@@ -65,7 +65,39 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user.id
-            return redirect(url_for('home'))
+            return redirect(url_for('dashboard'))
         # Change later to dashboard.html
 
     return render_template('/auth/login.html')
+
+
+@bp.before_app_request
+# this gets executed before ANY request.
+def load_logged_in_user():
+    """If a user id is stored in the session, load the user object from
+    the database into ``g.user``."""
+    user_id = session.get("user_id")
+
+    print(user_id)
+    if user_id is None:
+        g.user = None
+    else:
+        g.user = User.query.filter_by(id=user_id).first()
+
+
+def login_required(view):
+    # Wrapper function to check if user is logged in.
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if g.user is None:
+            return redirect(url_for('auth.login'))
+
+        return view(**kwargs)
+
+    return wrapped_view
+
+
+@bp.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('auth.login'))
