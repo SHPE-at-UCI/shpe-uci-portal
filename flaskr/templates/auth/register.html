@@ -1,5 +1,60 @@
 {% extends 'base.html' %} {% block header %}
-<h1>{% block title %}Register{% endblock %}</h1>
+<!-- This should always go here -->
+<h1>{% block title %}{% endblock %}</h1>
+<!-- You can change Register to anything else.-->
 {% endblock %} {% block content %}
-<h2>Form</h2>
+<!-- All your body content goes here! -->
+
+<div class="container">
+    <form method="post">
+            <label for='First name'> <b>First name&nbsp;&nbsp;&nbsp;</b> </label> 
+                    <input 
+                        first_name='First_name'
+                        placeholder="Enter first name"
+                        id="First name"
+                        required
+                    ><br />
+            <label for="Last Name"> <b>Last Name&nbsp;&nbsp;&nbsp;</b></label>
+                <input
+                type="Last Name"
+                placeholder="Last Name"
+                name="Last Name"
+                id="Last Name"
+                required
+            /><br />       
+            <label for="Email (UCI)"> <b>Email &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;    &NonBreakingSpace;</b></label>
+                <input class='center'
+                type="Email"
+                placeholder="Enter UCI email"
+                name="Email"
+                id="Email"
+                required
+                /><br/>
+        <label for="password"> <b>Password &nbsp;&nbsp; &nbsp;</b> </label>
+            <input
+            type="password"
+            placeholder="Enter password"
+            name="password"
+            id="passwrod"
+            required
+            /><br/>   
+        <label for="Major"> <b>Major &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</b></label>
+            <input
+            type="Major"
+            placeholder="Major"
+            name="Major"
+            id="Major"
+            required
+            /><br/>   
+        <label for="Year"> <b>Year &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </b></label>
+            <input
+            type="Year"
+            placeholder="Year"
+            name="Year"
+            id="Year"
+            required
+            /><br/>
+    </form>
+</div>
 {% endblock %}
+

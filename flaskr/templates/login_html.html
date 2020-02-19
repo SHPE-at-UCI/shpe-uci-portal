@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% block header %}
+<!-- This should always go here -->
+<h1>
+    {% block title %}
+    <center>Login to the SHPE at UCI Member Portal</center>
+    {% endblock %}
+</h1>
+<!-- You can change Register to anything else.-->
+{% endblock %} {% block content %}
+<!-- All your body content goes here! -->
+<div class="container">
+    <form method="post">
+        <center>
+            <label for="email"><b>Email</b></label>
+            <input
+                name="email"
+                placeholder="Enter email"
+                id="email"
+                required
+            /><br />
+            <label for="password"><b>Password</b></label>
+            <input
+                type="password"
+                placeholder="Enter password"
+                name="password"
+                id="password"
+                required
+            /><br />
+            <input type="checkbox" name="remember" /> Remember me
+            <input type="submit" value="Log In" />
+        </center>
+    </form>
+</div>
+<center>
+    <div class="container">
+        <a href="/forgot">Forgot Password?</a>
+    </div>
+    <div class="container">
+        <a href="{{ url_for('auth.register') }}">
+            Don't have an account? Register here</a
+        >
+    </div>
+</center>
+{% endblock %}
