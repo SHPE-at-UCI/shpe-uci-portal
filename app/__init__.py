@@ -7,6 +7,8 @@ from flask.cli import with_appcontext
 from .extensions import db
 from .commands import create_tables
 
+from app.routes.auth import login_required
+
 
 def create_app(config_file='settings.py'):
     # create and configure the app
@@ -36,6 +38,7 @@ def create_app(config_file='settings.py'):
         return render_template('home.html')
 
     @app.route('/dashboard')
+    @login_required
     def dashboard():
         return render_template('dashboard.html')
 
