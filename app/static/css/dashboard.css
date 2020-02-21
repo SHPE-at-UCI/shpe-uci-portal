@@ -19,6 +19,24 @@ body {
     background-color: #373F51;
 }
 
-body > div {
-    background-color: whitesmoke;
+/* Point Cards */
+
+#fall-card {
+    background-color: rgba(187, 26, 26, 0.363);
 }
+
+#winter-card {
+    background-color: rgba(135, 207, 235, 0.521);
+}
+
+#spring-card {
+    background-color: rgba(0, 255, 0, 0.288);
+}
+
+h2 {
+    color: #E5B781;
+}
+
+body > div {
+}
+
