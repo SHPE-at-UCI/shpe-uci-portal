@@ -1,22 +1,61 @@
 {% extends 'base.html' %} {% block header %}
-<!-- This should always go here -->
-<h1>{% block title %}Home{% endblock %}</h1>
+
+<h1>
+    {% block title %}
+    <div class="text-center">Register to the SHPE Member Portal</div>
+    {% endblock %}
+</h1>
 <!-- You can change Register to anything else.-->
 {% endblock %} {% block content %}
 <!-- All your body content goes here! -->
-<h3>
-    Password <br />
-    <input /> <br />
-    Email (UCI) <br />
-    <input /> <br />
-    First Name <br />
-    <input /> <br />
-    Last Name <br />
-    <input /> <br />
-    Major <br />
-    <input /> <br />
-    Year <br />
-    <input /> <br />
-</h3>
 
+<div class="container text-center">
+    <form method="post">
+        <label for="first_name"> <b>First name&nbsp;&nbsp;&nbsp;</b> </label>
+        <input
+            name="first_name"
+            placeholder="Enter first name"
+            id="first_name"
+            required
+        /><br />
+        <label for="last_name"> <b>Last Name&nbsp;&nbsp;&nbsp;</b></label>
+        <input
+            placeholder="Last Name"
+            name="last_name"
+            id="last_name"
+            required
+        /><br />
+        <label for="email">
+            <b
+                >Email &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &NonBreakingSpace;</b
+            ></label
+        >
+        <input
+            class="center"
+            type="Email"
+            placeholder="Enter UCI email"
+            name="email"
+            id="email"
+            required
+        /><br />
+        <label for="password"> <b>Password &nbsp;&nbsp; &nbsp;</b> </label>
+        <input
+            type="password"
+            placeholder="Enter password"
+            name="password"
+            id="password"
+            required
+        /><br />
+        <label for="Major">
+            <b>Major &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</b></label
+        >
+        <input placeholder="Major" name="major" id="major" required /><br />
+        <label for="Year">
+            <b>Year &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </b></label
+        >
+        <input placeholder="Year" name="year" id="year" required /><br />
+        <input type="checkbox" name="remember" /> Remember me
+        <input type="submit" value="Log In" />
+    </form>
+</div>
 {% endblock %}
