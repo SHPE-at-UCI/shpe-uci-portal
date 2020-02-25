@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block header %}
+<!-- This should always go here -->
+  {% block title %}
+    <title>Login</title>
+  {% endblock %}
+<!-- You can change Register to anything else.-->
+{% endblock %} {% block content %}
+<!-- All your body content goes here! -->
+<nav class="navbar sticky-top">
+    <a class="navbar-brand" href="#">SHPE Portal</a>
+</nav>
+
+<div class="container-login100">
+    <div class="wrap-login100">
+
+      <h1>Login</h1>
+      <hr>
+
+      <form method="post">
+          <label for="email"><b>Email</b></label>
+          <input
+              name="email"
+              placeholder="Enter email"
+              id="email"
+              required
+          /><br/>
+          <label for="password"><b>Password</b></label>
+          <input
+              type="password"
+              placeholder="Enter password"
+              name="password"
+              id="password"
+              required
+          /><br />
+          <input type="checkbox" name="remember" /> Remember 
+          <input type="submit" value="Log In" />
+      </form>
+
+
+      <a href="/forgot">Forgot Password?</a> <br>
+      Don't have an account?
+          <a href="{{ url_for('auth.register') }}">
+             Register here</a>
+    </div>
+</div>
+{% endblock %}
