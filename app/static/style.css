@@ -3,12 +3,14 @@
     background-color: #0071C5;
     box-shadow: 10px 0px 20px black;
     color: gray;
+    font-size: 30px;
 }
 
 * {
 	margin: 0px; 
 	padding: 0px; 
 	box-sizing: border-box;
+
 }
 
 a {
@@ -19,6 +21,19 @@ a {
   	-o-transition: all 0.4s;
   	-moz-transition: all 0.4s;
 }
+
+input[type=submit] {
+	background: #0071C5;
+	color: white;
+	width: 300px;
+	padding:5px 15px; 
+	border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+
 
 .container-login100 {
   width: 100%;  

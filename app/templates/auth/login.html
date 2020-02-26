@@ -7,7 +7,7 @@
 {% endblock %} {% block content %}
 <!-- All your body content goes here! -->
 <nav class="navbar sticky-top">
-    <a class="navbar-brand" href="#">SHPE Portal</a>
+    <a class="navbar-brand" href="#">SHPE | UCI Portal</a>
 </nav>
 
 <div class="container-login100">
@@ -17,7 +17,9 @@
       <hr>
 
       <form method="post">
-          <label for="email"><b>Email</b></label>
+          <label for="email"><b>
+            <img src="email.jpeg" alt="Email">
+          </b></label>
           <input
               name="email"
               placeholder="Enter email"
@@ -32,15 +34,14 @@
               id="password"
               required
           /><br />
-          <input type="checkbox" name="remember" /> Remember 
+          <input type="checkbox" name="remember" /> Remember Me
+          <br>
           <input type="submit" value="Log In" />
       </form>
 
 
-      <a href="/forgot">Forgot Password?</a> <br>
-      Don't have an account?
-          <a href="{{ url_for('auth.register') }}">
-             Register here</a>
+      <a href="/forgot">Forgot Password?</a> 
+      Don't have an account? <a href="{{ url_for('auth.register') }}">Register here</a>
     </div>
 </div>
 {% endblock %}
