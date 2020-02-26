@@ -2,11 +2,10 @@ venv/
 env
 .env
 *.env
-vscode
+.vscode
 *.pyc
 __pycache__/
 __pycache__
-
 
 instance/
 
