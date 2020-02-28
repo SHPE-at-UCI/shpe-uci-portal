@@ -100,6 +100,11 @@ In the future we will have continuous deployments.
 Made by Guillermo Hernandez - SHPE Technical Program Manager
 [Link](https://www.youtube.com/watch?v=T0Ml5WnQbJY&feature=youtu.be)
 
+## Resources
+http://flask.palletsprojects.com/en/1.1.x/tutorial/
+https://flask-sqlalchemy.palletsprojects.com/en/2.x/quickstart/#a-minimal-application
+
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
