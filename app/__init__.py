@@ -43,7 +43,6 @@ def create_app(config_file='settings.py'):
         return render_template('dashboard.html')
 
     @app.route('/meetteam')
-    @login_required
     def meet_team():
         return 'MeetTeam'
 
