@@ -1,1 +1,99 @@
 /* Put your custom CSS here. */
+.navbar {
+    background-color: #0071C5;
+    box-shadow: 10px 0px 20px black;
+    color: white;
+    min-height: 7vh;
+}
+
+.navbar-brand {
+    color: white;
+    font-size: 20px;
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+
+}
+
+h1 {
+  justify-content: center;
+  align-items: center;
+  color: #0071C5;
+
+}
+
+a {
+	line-height: 1.7;
+	margin: 0px;
+	transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+  	-o-transition: all 0.4s;
+  	-moz-transition: all 0.4s;
+}
+
+input[type=submit] {
+	background: #0071C5;
+	color: white;
+	width: 20vw;
+	padding:5px 15px;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  line-height: 1.5;
+}
+
+input[type=text], input[type=password]{
+  width: 20vw;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  padding:5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: block;
+  margin:0 auto;
+  justify-content: center;
+}
+
+.container-login100 {
+  width: 100%;
+  min-height: 93vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  background: #399be6;
+  background: -webkit-linear-gradient(-135deg, #0071C5, #ffffff);
+  background: -o-linear-gradient(-135deg, #0071C5, #ffffff);
+  background: -moz-linear-gradient(-135deg, #0071C5, #ffffff);
+  background: linear-gradient(-135deg, #0071C5, #ffffff);
+}
+
+.wrap-login100 {
+  width: 35vw;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  min-height: 50vh;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  padding: 30px 30px 30px 30px;
+}
+
