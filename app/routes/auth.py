@@ -38,7 +38,6 @@ def register():
             return redirect(url_for('dashboard'))
 
         flash(error)
-        # Change later to dashboard.html
     return render_template('/auth/register.html')
 
 
