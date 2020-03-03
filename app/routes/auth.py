@@ -65,7 +65,7 @@ def login():
                             system=platform, user_id=user.id)
             db.session.add(logins)
             db.session.commit()
-            return redirect(url_for('home'))
+            return redirect(url_for('dashboard'))
 
     return render_template('/auth/login.html')
 
