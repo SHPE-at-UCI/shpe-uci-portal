@@ -62,9 +62,8 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user.id
-            logins = (user.id, time(), platform)
-            print(logins)
-            print("Hi")
+            logins = Logins(time=time(),
+                            system=platform, user_id=user.id)
             db.session.add(logins)
             db.session.commit()
             print("Here")
