@@ -65,8 +65,6 @@ def login():
                             system=platform, user_id=user.id)
             db.session.add(logins)
             db.session.commit()
-            print("Here")
-            print(Logins.query.all())
             return redirect(url_for('home'))
 
     return render_template('/auth/login.html')
