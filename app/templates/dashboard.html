@@ -11,13 +11,13 @@
 {% block content %}
 
 <nav class="navbar sticky-top">
-    <a class="navbar-brand" href="#">SHPE Portal</a>
+    <a class="navbar-brand" href="#">SHPE | UCI Portal</a>
     <div class="dropdown">
         <button 
             type="button" 
             class="btn btn-outline-light dropdown-toggle" 
             data-toggle="dropdown">
-            Hello Memo!
+            Hello Frontend Team!
         </button>
         <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item" href="#">Portfolio</a>
@@ -29,68 +29,83 @@
     </div>
 </nav>
 
-<div class="container my-4">
-    <div class="row">
-        <div class="col">
-            <h2 class="text-center">
-                My Points
-            </h2>
-        </div>
+<div class="container px-4">
+    <div class="row my-4">
+        <h2 class="subtitle">Points Program</h2>
     </div>
-    <div class="row">
-        <div class="col-4">
-            <div class="card" id="fall-card">
-                <h3 class="text-center">Fall Quarter</h3>
-                <h2 class="text-center">0 points</h2>
+    <div class="card-group my-4">
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="card-title text-center">
+                    <h2>Fall<br>Quarter</h2>
+                    <h4>0 Points</h4>
+                </div>
             </div>
         </div>
-        <div class="col-4">
-            <div class="card" id="winter-card">
-                <h3 class="text-center">Winter Quarter</h3>
-                <h2 class="text-center">0 points</h2>
+        <div class="card bg-white mx-2">
+            <div class="card-body">
+                <div class="card-title text-center">
+                    <h2>Winter<br>Quarter</h2>
+                    <h4>0 Points</h4>
+                </div>
             </div>
         </div>
-        <div class="col-4">
-            <div class="card" id="spring-card">
-                <h3 class="text-center">Spring Quarter</h3>
-                <h2 class="text-center">0 points</h2>
+        <div class="card bg-light">
+            <div class="card-body text-center">
+                    <h2>Spring<br>Quarter</h2>
+                    <h4>0 Points</h4>
             </div>
         </div>
     </div>
 </div>
 
-
 <div class="container my-4">
-    <div class="row">
+    <div class="row my-2">
         <div class="col-5">
             <h2>SHPTinas</h2>
-           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-           eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-           Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-           laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
-           irure dolor in reprehenderit in voluptate velit esse cillum 
-           dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-           non proident, 
-           sunt in culpa qui officia deserunt mollit anim id est laborum." 
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+            irure dolor in reprehenderit in voluptate velit esse cillum 
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+            non proident, 
+            sunt in culpa qui officia deserunt mollit anim id est laborum." 
         </div>
         <div class="col">
             <img class="img-fluid" src="https://canvasjs.com/wp-content/uploads/images/gallery/php-charts/overview/php-charts-graphs-index-data-label.png">
         </div>
     </div>
-</div>
-
-<div class="container my-4">
-    <div class="row">
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Upload</span>
-            </div>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="resumeUpload" onChange="updateFilename()">
-                <label class="custom-file-label" for="resumeUpload" id="resumeLabel">Choose File</label>
-            </div>
+    
+    <div class="row my-2">
+        <div class="col">
+            <img class="img-fluid" src="https://canvasjs.com/wp-content/uploads/images/gallery/php-charts/overview/php-charts-graphs-index-data-label.png">
+        </div>
+        <div class="col-5">
+            <h2>SHPE Familias</h2>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+            irure dolor in reprehenderit in voluptate velit esse cillum 
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+            non proident, 
+            sunt in culpa qui officia deserunt mollit anim id est laborum." 
         </div>
     </div>
+</div>
+
+<div class="container">
+	<div class="row">
+        <div class="col-md-12">
+            <form method="post" action="#" id="#">
+                <div class="form-group files">
+                    <label>Upload Your File </label>
+                    <input type="file" class="form-control">
+                </div>
+                <button type="submit" value="submit">Submit</button>
+        </form>
+	</div>
 </div>
 
 {% endblock %}
