@@ -4,8 +4,11 @@ from flask import (Blueprint, flash, g, redirect, render_template, request,
                    session, url_for)
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from app.models import User
+from app.models import User, Logins
 from app.extensions import db
+
+from time import time
+from sys import platform
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -38,7 +41,6 @@ def register():
             return redirect(url_for('dashboard'))
 
         flash(error)
-        # Change later to dashboard.html
     return render_template('/auth/register.html')
 
 
@@ -59,8 +61,12 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user.id
-            return redirect(url_for('dashboard'))
-        # Change later to dashboard.html
+            logins = Logins(time=time(),
+                            system=platform, user_id=user.id)
+            db.session.add(logins)
+            db.session.commit()
+            return redirect(url_for('home'))
+
     return render_template('/auth/login.html')
 
 

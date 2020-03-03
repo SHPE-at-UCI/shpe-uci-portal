@@ -1,4 +1,6 @@
 from app import db
+from sys import platform
+from time import time
 
 
 class User(db.Model):
@@ -10,8 +12,19 @@ class User(db.Model):
     # major = db.Column(db.String(120))
     # year = db.Column(db.Integer)
     # first_registration = db.Column(db.DateTime)
-
-
+    logins = db.relationship('Logins', backref='user', lazy=True)
 
     def __repr__(self):
         return '<User %r>' % self.email
+
+
+class Logins(db.Model):
+    id = db.Column(db.Integer, nullable=False, primary_key=True)
+    time = db.Column(db.Float, nullable=False)
+    system = db.Column(db.String(120), nullable=False)
+
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'),
+                        nullable=False)
+
+    def __repr__(self):
+        return '<User %r>' % self.user
