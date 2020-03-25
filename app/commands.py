@@ -8,4 +8,5 @@ from .models import User
 @click.command(name='create_tables')
 @with_appcontext
 def create_tables():
+    db.drop_all()
     db.create_all()
