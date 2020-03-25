@@ -20,8 +20,10 @@ def register():
     if request.method == 'POST':
         email = request.form['email']
         password = generate_password_hash(request.form['password'])
-        # first_name = request.form['first_name']
-        # last_name = request.form['last_name']
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+        major = request.form['major']
+        year = request.form['year']
         error = None
         find_one = User.query.filter_by(email=email).first()
 
@@ -33,7 +35,7 @@ def register():
             error = 'User {} is already registered.'.format(email)
 
         if error is None:
-            user = User(email=email, password=password)
+            user = User(email=email, password=password, first_name=first_name, last_name=last_name, major=major, year=year)
             db.session.add(user)
             db.session.commit()
             print(User.query.all())
