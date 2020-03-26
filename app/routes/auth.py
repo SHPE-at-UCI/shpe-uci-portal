@@ -4,7 +4,7 @@ from flask import (Blueprint, flash, g, redirect, render_template, request,
                    session, url_for)
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from app.models import User, Logins
+from app.models import User
 from app.extensions import db
 
 from time import time
@@ -63,10 +63,10 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user.id
-            logins = Logins(time=time(),
-                            system=platform, user_id=user.id)
-            db.session.add(logins)
-            db.session.commit()
+            # logins = Logins(time=time(),
+            #                 system=platform, user_id=user.id)
+            # db.session.add(logins)
+            # db.session.commit()
             return redirect(url_for('dashboard'))
 
     return render_template('/auth/login.html')
