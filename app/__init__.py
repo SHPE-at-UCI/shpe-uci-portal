@@ -5,7 +5,7 @@ import click
 from flask.cli import with_appcontext
 
 from .extensions import db
-from .commands import create_tables
+from .commands import create_tables, do
 
 from app.routes.auth import login_required
 

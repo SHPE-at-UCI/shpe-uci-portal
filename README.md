@@ -4,64 +4,73 @@ We will be using Flasks project tutorial found [here](http://flask.palletsprojec
 
 ## Installation
 
-#### [Python3](https://www.python.org/downloads/) & [pip](https://pip.pypa.io/en/stable/)
+#### 1) Docker
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the dependencies of the project.
+We will be using Docker containers. You will need to install it before you proceed.
 
-Clone this project.
+https://www.docker.com/products/docker-desktop
 
-```bash
-$ git clone https://github.com/SHPE-at-UCI/clubs.uci.edu.shpe.git
-$ cd clubs.uci.edu.shpe
-```
-
-Create a virtualenv
-
-```bash
-$ python3 -m venv venv
-```
-
-Activate the virtualenv
-
-```bash
-$ . venv/bin/activate
-```
-
-Or on Windows cmd:
+To check if you installed it correctly, run this command in the terminal or GitBash.
 
 ```
-$ py -3 -m venv venv
-$ . venv/Scripts/activate
+$ docker
 ```
 
-Install Dependencies:
+You should see a list of docker commands
 
-```
-$ pip3 install -r requirements.txt
-```
+#### 2) Build & Run Docker container 
 
-Run Flask
-```
-./runapp
-```
+On the root directory, run the following commands
 
-You’ll see output similar to this:
-
+###### Windows
+Build
 ```
-* Serving Flask app "app"
-* Environment: development
-* Debug mode: on
-* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-* Restarting with stat
-* Debugger is active!
-* Debugger PIN: 855-212-761
+$ docker build -t shpeapp:latest .
+```
+Run
+```
+$ docker run -p -i 5000:5000 shpeapp:latest //bin/bash -c "flask create_tables; flask run --host=0.0.0.0"
 ```
 
-Stop Virtual Environment
+???
+
+Profit.
+
+---
+###### Linux & Mac
+Build
+```
+$ docker build -t shpeapp:latest .  
+```
+
+Run 
+```
+docker run -i -t -p 5000:5000 shpeapp:latest /bin/bash -c "flask create_tables; flask run --host=0.0.0.0"
+```
+???
+
+Profit.
+
+#### 3) Exiting Docker Container
+
+Control C method
+```
+Crtl-c
+```
+
+To see if your container is still running do
+```
+docker ps
+```
+
+If you see the "shpeapp:latest" image listed, use this command to shut down the container.
 
 ```
-$ deactivate
+$ docker container kill $(docker ps | grep "shpeapp" | awk '{print $1}')
 ```
+
+
+### Important: Whenever you pull from master, always build the container, there may be changes to the image!
 
 ### Contributing
 
