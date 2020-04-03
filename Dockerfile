@@ -35,4 +35,5 @@ RUN pip3 --no-cache-dir install -r requirements.txt
 
 EXPOSE 5000
 
-CMD ["/bin/bash", "./runapp"]
+# CMD ["/bin/bash", "./runapp"]
+# CMD ["flask", "create_tables","&&", "flask", "run"]
