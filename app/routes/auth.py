@@ -63,10 +63,6 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user.id
-            # logins = Logins(time=time(),
-            #                 system=platform, user_id=user.id)
-            # db.session.add(logins)
-            # db.session.commit()
             return redirect(url_for('dashboard'))
 
     return render_template('/auth/login.html')
