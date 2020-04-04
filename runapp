@@ -6,14 +6,14 @@ then
 	export FLASK_APP=app
 	export FLASK_ENV=development
 	flask create_tables
-	flask run --host=0.0.0.0
+	flask run 
 else
 	echo "Not running in (venv)"
 	echo "Launching (venv)"
 	export FLASK_APP=app
 	export FLASK_ENV=development
 	flask create_tables
-	flask run --host=0.0.0.0
+	flask run 
 fi
 
 exit 0
