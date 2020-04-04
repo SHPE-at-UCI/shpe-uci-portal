@@ -2,75 +2,35 @@
 
 We will be using Flasks project tutorial found [here](http://flask.palletsprojects.com/en/1.1.x/tutorial/).
 
-## Installation
+## Install & Run
 
-#### 1) Docker
+#### 1) Install
 
-We will be using Docker containers. You will need to install it before you proceed.
+Assuming you already cloned this repo.
 
-https://www.docker.com/products/docker-desktop
+Run the command below on the root directory of the repo to create the virtual environment and install the dependencies.
 
-To check if you installed it correctly, run this command in the terminal or GitBash.
+###### Windows
 
 ```
-$ docker
+$ ./install-windows
 ```
 
-You should see a list of docker commands
+###### Linux & Mac
 
-#### 2) Build & Run Docker container 
+```
+$ ./install-linux
+```
+
+**Note:** You will need to create a .env file in the root directory. Contact an administrator of the repo to get it and copy its contents to your .env file. Link can be found here: [file](https://shpetechcommittee.slack.com/archives/C011D0TD154)
+
+#### 2) Run Web App
 
 On the root directory, run the following commands
 
-###### Windows
-Build
 ```
-$ docker build -t shpeapp:latest .
+./runapp
 ```
-Run
-```
-$ docker run -p -i 5000:5000 shpeapp:latest //bin/bash -c "flask create_tables; flask run --host=0.0.0.0"
-```
-
-???
-
-Profit.
-
----
-###### Linux & Mac
-Build
-```
-$ docker build -t shpeapp:latest .  
-```
-
-Run 
-```
-docker run -i -t -p 5000:5000 shpeapp:latest /bin/bash -c "flask create_tables; flask run --host=0.0.0.0"
-```
-???
-
-Profit.
-
-#### 3) Exiting Docker Container
-
-Control C method
-```
-Crtl-c
-```
-
-To see if your container is still running do
-```
-docker ps
-```
-
-If you see the "shpeapp:latest" image listed, use this command to shut down the container.
-
-```
-$ docker container kill $(docker ps | grep "shpeapp" | awk '{print $1}')
-```
-
-
-### Important: Whenever you pull from master, always build the container, there may be changes to the image!
 
 ### Contributing
 
