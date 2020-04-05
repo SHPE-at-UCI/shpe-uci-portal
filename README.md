@@ -6,9 +6,10 @@ We will be using Flasks project tutorial found [here](http://flask.palletsprojec
 
 #### 1) Install
 
-Assuming you already cloned this repo.
+###### ALL SYSTEMS
+Download the ```.env``` file from slack and place it in the root directory of this cloned repo. Here is the [link](https://shpetechcommittee.slack.com/archives/C011D0TD154/p1586063096000300)
 
-Run the command below on the root directory of the repo to create the virtual environment and install the dependencies.
+Then execute the commands below depending on your system.
 
 ###### Windows
 
@@ -22,14 +23,20 @@ $ ./install-windows
 $ ./install-linux
 ```
 
-**Note:** You will need to create a .env file in the root directory. Contact an administrator of the repo to get it and copy its contents to your .env file. Link can be found here: [file](https://shpetechcommittee.slack.com/archives/C011D0TD154)
-
 #### 2) Run Web App
 
 On the root directory, run the following commands
 
+###### Windows
+
 ```
-./runapp
+$ ./runapp-windows
+```
+
+###### Linux & Mac
+
+```
+$ ./runapp
 ```
 
 ### Contributing

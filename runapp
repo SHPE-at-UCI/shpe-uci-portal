@@ -5,7 +5,6 @@ then
 	echo "Running in $VIRTUAL_ENV"
 	export FLASK_APP=app
 	export FLASK_ENV=development
-	flask create_tables
 	flask run 
 else
 	echo "Not running in (venv)"
@@ -13,7 +12,6 @@ else
 	. venv/bin/activate
 	export FLASK_APP=app
 	export FLASK_ENV=development
-	flask create_tables
 	flask run 
 fi
 
