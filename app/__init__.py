@@ -14,8 +14,8 @@ def create_app(config_file='settings.py'):
     # create and configure the app
     app = Flask(__name__)
     # app.config.from_pyfile(config_file)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/shpe.db'
-    app.config['SECRET_KEY'] = 'SECRET'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\temp\\shpe.db'
+    app.config['SECRET_KEY'] = 'Secret'
 
     db.init_app(app)
 
