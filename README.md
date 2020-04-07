@@ -9,6 +9,8 @@ We will be using Flasks project tutorial found [here](http://flask.palletsprojec
 ###### ALL SYSTEMS
 Download the ```.env``` file from slack and place it in the root directory of this cloned repo. Here is the [link](https://shpetechcommittee.slack.com/archives/C011D0TD154/p1586063096000300)
 
+***IMPORTANT:*** When you download the file, rename it to ```.env```. For some reason, when you download the file it will get rid of the period.
+
 Then execute the commands below depending on your system.
 
 ###### Windows
