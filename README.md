@@ -2,65 +2,43 @@
 
 We will be using Flasks project tutorial found [here](http://flask.palletsprojects.com/en/1.1.x/tutorial/).
 
-## Installation
+## Install & Run
 
-#### [Python3](https://www.python.org/downloads/) & [pip](https://pip.pypa.io/en/stable/)
+#### 1) Install
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the dependencies of the project.
+###### ALL SYSTEMS
+Download the ```.env``` file from slack and place it in the root directory of this cloned repo. Here is the [link](https://shpetechcommittee.slack.com/archives/C011D0TD154/p1586063096000300)
 
-Clone this project.
+***IMPORTANT:*** When you download the file, rename it to ```.env```. For some reason, when you download the file it will get rid of the period.
 
-```bash
-$ git clone https://github.com/SHPE-at-UCI/clubs.uci.edu.shpe.git
-$ cd clubs.uci.edu.shpe
-```
+Then execute the commands below depending on your system.
 
-Create a virtualenv
-
-```bash
-$ python3 -m venv venv
-```
-
-Activate the virtualenv
-
-```bash
-$ . venv/bin/activate
-```
-
-Or on Windows cmd:
+###### Windows
 
 ```
-$ py -3 -m venv venv
-$ . venv/Scripts/activate
+$ ./install-windows
 ```
 
-Install Dependencies:
+###### Linux & Mac
 
 ```
-$ pip3 install -r requirements.txt
+$ ./install-linux
 ```
 
-Run Flask
-```
-./runapp
-```
+#### 2) Run Web App
 
-You’ll see output similar to this:
+On the root directory, run the following commands
 
-```
-* Serving Flask app "app"
-* Environment: development
-* Debug mode: on
-* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-* Restarting with stat
-* Debugger is active!
-* Debugger PIN: 855-212-761
-```
-
-Stop Virtual Environment
+###### Windows
 
 ```
-$ deactivate
+$ ./runapp-windows
+```
+
+###### Linux & Mac
+
+```
+$ ./runapp
 ```
 
 ### Contributing

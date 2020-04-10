@@ -6,15 +6,16 @@ then
 	export FLASK_APP=app
 	export FLASK_ENV=development
 	flask create_tables
-	flask run
+	flask run 
 else
 	echo "Not running in (venv)"
 	echo "Launching (venv)"
-	. venv/bin/activate
+	. venv/Scripts/activate
 	export FLASK_APP=app
 	export FLASK_ENV=development
 	flask create_tables
-	flask run
+	flask run 
 fi
 
 exit 0
+

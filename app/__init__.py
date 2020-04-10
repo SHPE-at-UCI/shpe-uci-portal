@@ -4,23 +4,18 @@ from flask import Flask, render_template, redirect, url_for
 import click
 from flask.cli import with_appcontext
 
-from .extensions import db
-from .commands import create_tables
+from .commands import test
 
 from app.routes.auth import login_required
 
 
-def create_app(config_file='settings.py'):
+def create_app():
     # create and configure the app
     app = Flask(__name__)
-    app.config.from_pyfile(config_file)
-
-    db.init_app(app)
+    app.secret_key = os.getenv("SECRET_KEY")
 
     from app.routes import auth
     app.register_blueprint(auth.bp)
-
-    app.cli.add_command(create_tables)
 
     # ensure the instance folder exists
     try:
@@ -41,6 +36,10 @@ def create_app(config_file='settings.py'):
     @login_required
     def dashboard():
         return render_template('dashboard.html')
+
+    @app.route('/meetteam')
+    def meet_team():
+        return 'MeetTeam'
 
     @app.errorhandler(404)
     def page_not_found(error):
