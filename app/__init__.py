@@ -37,6 +37,10 @@ def create_app():
     def dashboard():
         return render_template('dashboard.html')
 
+    @app.route('/portfolio')
+    def portfolio():
+        return render_template('portfolio.html')
+
     @app.route('/meetteam')
     def meet_team():
         return 'MeetTeam'

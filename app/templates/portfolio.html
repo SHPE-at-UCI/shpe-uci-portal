@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+<!--Import the <head> from 'base.html'-->
+{% block header %}
+    <title>SHPE UCI - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}"/>
+    {% block title %}
+    {% endblock %}
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar sticky-top">
+    <a class="navbar-brand" href="#">SHPE | UCI Portal</a>
+    <div class="dropdown">
+        <button 
+            type="button" 
+            class="btn btn-outline-light dropdown-toggle" 
+            data-toggle="dropdown">
+            Hello Frontend Team!
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#">Portfolio</a>
+            <a class="dropdown-item" href="#">Settings</a>
+            <a class="dropdown-item" href="{{ url_for('auth.logout') }}"
+                >Logout</a
+            >
+        </div>
+    </div>
+</nav>
+
+<div class="container my-4" id="member-banner">
+    <img class="rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Square_200x200.png" alt="Profile Picture" class="img-thumbnail">
+</div>
+
+{% endblock %}
