@@ -1,4 +1,5 @@
 import pyrebase, os
+from urllib.parse import quote
 
 config = {
   "apiKey": os.getenv("API_KEY"),
@@ -14,3 +15,11 @@ auth = firebase.auth()
 
 db = firebase.database()
 
+def getBasicUserInfo(username: str) -> dict:
+    user_dict = None
+    u_data = db.child("users").get().val()
+    for k in u_data:
+        if (u_data[k]['email'] == username+"@uci.edu"):
+            user_dict = u_data[k]
+    print(user_dict)
+    return user_dict

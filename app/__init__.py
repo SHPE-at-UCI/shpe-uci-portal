@@ -8,7 +8,6 @@ from .commands import test
 
 from app.routes.auth import login_required
 
-
 def create_app():
     # create and configure the app
     app = Flask(__name__)
@@ -37,9 +36,17 @@ def create_app():
     def dashboard():
         return render_template('dashboard.html')
 
-    @app.route('/portfolio')
-    def portfolio():
-        return render_template('portfolio.html')
+    @app.route('/portfolio/<ucinet>')
+    def portfolio(ucinet):
+        print(f"Retrieving Data for {ucinet}")
+        userInfo = extensions.getBasicUserInfo(ucinet)
+        if userInfo == None:
+            return page_not_found("User not found")
+        return render_template('portfolio.html', 
+            firstName = userInfo["first_name"],
+            lastName  = userInfo["last_name"],
+            gradYear  = userInfo["year"],
+            major     = userInfo["major"])
 
     @app.route('/meetteam')
     def meet_team():
