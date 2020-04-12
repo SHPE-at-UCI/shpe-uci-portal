@@ -37,9 +37,9 @@ def create_app():
     def dashboard():
         return render_template('dashboard.html')
 
-    @app.route('/meetteam')
-    def meet_team():
-        return 'MeetTeam'
+    @app.route('/team')
+    def team():
+        return render_template('/team.html')
 
     @app.errorhandler(404)
     def page_not_found(error):
