@@ -8,26 +8,12 @@
     {% endblock %}
 {% endblock %}
 
+{% from "components.html" import navbar_logged_in with context %}
+
 {% block content %}
 
-<nav class="navbar sticky-top">
-    <a class="navbar-brand" href="#">SHPE | UCI Portal</a>
-    <div class="dropdown">
-        <button 
-            type="button" 
-            class="btn btn-outline-light dropdown-toggle" 
-            data-toggle="dropdown">
-            Hello Frontend Team!
-        </button>
-        <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="#">Portfolio</a>
-            <a class="dropdown-item" href="#">Settings</a>
-            <a class="dropdown-item" href="{{ url_for('auth.logout') }}"
-                >Logout</a
-            >
-        </div>
-    </div>
-</nav>
+<!--Navbar to be displayed to logged in users-->
+{{ navbar_logged_in() }}
 
 <div class="container my-4 rounded" id="member-banner">
 	<div class="row justify-content-md-left">
