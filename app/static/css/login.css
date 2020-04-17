@@ -11,6 +11,9 @@
     font-size: 20px;
 }
 
+h1 {
+  color: #0071C5;
+}
 
 .container-login100 {
   width: 100%;
@@ -62,7 +65,6 @@ input[type=submit] {
 	color: white;
 	width: 270px;
 	padding:5px 15px;
-  cursor:pointer;
   -webkit-border-radius: 5px;
   border-radius: 5px;
   line-height: 1.5;
