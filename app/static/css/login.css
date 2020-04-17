@@ -44,7 +44,7 @@
 }
 
 input[type=text], input[type=password]{
-  width: 200px;
+  width: 270px;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   padding:5px;
@@ -60,7 +60,7 @@ input[type=text], input[type=password]{
 input[type=submit] {
 	background: #0071C5;
 	color: white;
-	width: 200px;
+	width: 270px;
 	padding:5px 15px;
   cursor:pointer;
   -webkit-border-radius: 5px;
