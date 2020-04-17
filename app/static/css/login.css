@@ -25,7 +25,7 @@
 }
 
 .wrap-login100 {
-  width: 35vw;
+  width: 400px;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
@@ -44,7 +44,7 @@
 }
 
 input[type=text], input[type=password]{
-  width: 20vw;
+  width: 200px;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   padding:5px;
@@ -60,7 +60,7 @@ input[type=text], input[type=password]{
 input[type=submit] {
 	background: #0071C5;
 	color: white;
-	width: 20vw;
+	width: 200px;
 	padding:5px 15px;
   cursor:pointer;
   -webkit-border-radius: 5px;
