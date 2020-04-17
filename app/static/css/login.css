@@ -15,15 +15,8 @@
 .container-login100 {
   width: 100%;
   min-height: 93vh;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  align-self: center;
   background: #399be6;
   background: -webkit-linear-gradient(-135deg, #0071C5, #ffffff);
   background: -o-linear-gradient(-135deg, #0071C5, #ffffff);
@@ -48,5 +41,35 @@
   align-items: center;
   align-self: center;
   padding: 30px 30px 30px 30px;
+}
+
+input[type=text], input[type=password]{
+  width: 20vw;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  padding:5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: block;
+  margin:0 auto;
+  justify-content: center;
+}
+
+input[type=submit] {
+	background: #0071C5;
+	color: white;
+	width: 20vw;
+	padding:5px 15px;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  line-height: 1.5;
+}
+
+.flash {
+  color: white;
+  background: red;
 }
 
