@@ -32,8 +32,7 @@ h1 {
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-  min-height: 50vh;
-
+  height: 400px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -71,7 +70,6 @@ input[type=submit] {
 }
 
 .flash {
-  color: white;
-  background: red;
+  color: red;
 }
 
