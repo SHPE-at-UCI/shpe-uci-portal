@@ -9,15 +9,17 @@
 <!-- You can change Register to anything else.-->
 {% endblock %} {% block content %}
 <!-- All your body content goes here! -->
+{% from "components.html" import navbar_logged_out with context %}
+{{navbar_logged_out()}}
 
-
-<nav class="navbar sticky-top">
-    <a class="navbar-brand" href="#">SHPE | UCI Portal</a>
-</nav>
-
-<div id=form >
+<div class="form mx-auto" >
     <div id="registration-form">
-        <p id="Form_name"> SHPE UCI Member Registration</b></p>
+        <div class="container">
+            {% for message in get_flashed_messages() %}
+            <div class="flash d-flex justify-content-center">{{ message }}</div>
+            {% endfor %} {% block content3 %} {% endblock %}
+          </div>
+        <h1 id="Form_name"> SHPE UCI Member Registration</h1>
         <form method="post">
             <input
                 type="text"
@@ -61,10 +63,12 @@
             name="year" 
             id="year" 
             required 
-        /> <br />
-            <input type="checkbox" name="remember" /> Remember me <br/> 
-            Already have an account? <a href="#">sign in</a>
+        />
+        <br>
+        <input type="submit" value="Register" />
         </form>
+        <br>
+        <span>Already have an account? <a href="{{ url_for('auth.login') }}">sign in</a></span>
     </div>
 </div>
 

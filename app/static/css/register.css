@@ -1,8 +1,8 @@
 .navbar {
     background-color: #0071C5;
-    box-shadow: 10px 0px 20px black;
+    box-shadow: 0px 0px 20px black;
     color: white;
-    min-height: 7vh;
+    /* min-height: 7vh; */
 }
 
 .navbar-brand {
@@ -14,7 +14,6 @@
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
-
 }
 
 h1 {
@@ -28,22 +27,15 @@ h1 {
     font-size: 30px;
     color: #0071C5;
     text-align: center;
-    padding: 0px;
+    padding: 0px 0px 10px;
 }
 
 
-#form {
+.form {
     width: 100%;
-    min-height: 100vh;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
+    min-height: 93vh;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    align-self: center;
     background: #399be6;
     background: -webkit-linear-gradient(-135deg, #ffffff, #0071C5);
     background: -o-linear-gradient(-135deg, #ffffff, #0071C5);
@@ -57,7 +49,7 @@ input[type=text], input[type=password], input[type=email]{
     width: 35vw;
     border-radius: 5px;
     -webkit-border-radius: 5px;
-    padding: 15px;
+    padding: 5px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -67,14 +59,14 @@ input[type=text], input[type=password], input[type=email]{
     justify-content: center;
   }
 
-input[type=submit] {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: block;
-    margin:0 auto;
-    justify-content: center;
+  input[type=submit] {
+    background: #0071C5;
+    color: white;
+    width: 270px;
+    padding:5px 15px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    line-height: 1.5;
   }
  
 #registration-form {
@@ -93,4 +85,8 @@ input[type=submit] {
         align-items: center;
         align-self: center;
         padding: 30px 30px 30px 30px;
+}
+
+.flash {
+  color: red;
 }
