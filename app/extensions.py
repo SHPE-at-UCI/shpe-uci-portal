@@ -23,6 +23,11 @@ class FBUser:
         self.lastname = user_info['last_name']
         self.major = user_info['major']
         self.year = user_info['year']
+        self._raw_dict = user_info.copy()
+        self._raw_dict['uid'] = uid
+
+    def get_dict(self) -> dict:
+        return self._raw_dict
 
     def print(self):
         print(self.uid)
