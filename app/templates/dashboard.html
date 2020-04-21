@@ -22,7 +22,7 @@
         <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item" href="/search">Search</a>
             <a class="dropdown-item" href="#">Portfolio</a>
-            <a class="dropdown-item" href="#">Settings</a>
+            <a class="dropdown-item" href="{{ url_for('settings')}}">Settings</a>
             <a class="dropdown-item" href="{{ url_for('auth.logout') }}">Logout</a>
         </div>
     </div>

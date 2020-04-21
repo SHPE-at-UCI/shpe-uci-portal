@@ -38,6 +38,11 @@ def create_app():
     def dashboard():
         return render_template('dashboard.html')
 
+    @app.route('/settings')
+    @login_required
+    def settings():
+        return render_template('settings.html')
+
     @app.route('/search')
     def search():
         users = get_all_users()
