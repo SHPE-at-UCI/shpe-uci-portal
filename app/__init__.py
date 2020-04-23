@@ -38,6 +38,12 @@ def create_app():
     def dashboard():
         return render_template('dashboard.html')
 
+
+    @app.route('/team')
+    def team():
+        return render_template('/team.html')
+    
+    
     @app.route('/settings')
     @login_required
     def settings():
@@ -49,10 +55,6 @@ def create_app():
         # for user in users:
         #     user.print()
         return render_template('search.html', users=users)
-
-    @app.route('/meetteam')
-    def meet_team():
-        return 'MeetTeam'
 
     @app.errorhandler(404)
     def page_not_found(error):
