@@ -15,6 +15,7 @@ def create_app():
     app.secret_key = os.getenv("SECRET_KEY")
 
     from app.routes import auth
+    from app.routes.search import get_all_users
     app.register_blueprint(auth.bp)
 
     # ensure the instance folder exists
@@ -37,9 +38,23 @@ def create_app():
     def dashboard():
         return render_template('dashboard.html')
 
+
     @app.route('/team')
     def team():
         return render_template('/team.html')
+    
+    
+    @app.route('/settings')
+    @login_required
+    def settings():
+        return render_template('settings.html')
+
+    @app.route('/search')
+    def search():
+        users = get_all_users()
+        # for user in users:
+        #     user.print()
+        return render_template('search.html', users=users)
 
     @app.errorhandler(404)
     def page_not_found(error):

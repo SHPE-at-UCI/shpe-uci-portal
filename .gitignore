@@ -18,3 +18,5 @@ build/
 *.egg-info/
 
 .DS_Store
+# PyCharm
+.idea/
