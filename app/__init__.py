@@ -14,9 +14,12 @@ def create_app():
     app = Flask(__name__)
     app.secret_key = os.getenv("SECRET_KEY")
 
-    from app.routes import auth
+    from app.routes import auth, settings
     from app.routes.search import get_all_users
+
+    #Register routes
     app.register_blueprint(auth.bp)
+    app.register_blueprint(settings.bp)
 
     # ensure the instance folder exists
     try:
@@ -37,11 +40,6 @@ def create_app():
     @login_required
     def dashboard():
         return render_template('dashboard.html')
-
-    @app.route('/settings')
-    @login_required
-    def settings():
-        return render_template('settings.html')
 
     @app.route('/search')
     def search():
