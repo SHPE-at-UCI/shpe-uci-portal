@@ -48,10 +48,6 @@ def create_app():
         #     user.print()
         return render_template('search.html', users=users)
 
-    @app.route('/meetteam')
-    def meet_team():
-        return 'MeetTeam'
-
     @app.errorhandler(404)
     def page_not_found(error):
         return render_template('/error/404.html', title='404'), 404
