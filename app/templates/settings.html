@@ -10,24 +10,10 @@
 {% endblock %}
 
 {% block content %}
-<nav class="navbar sticky-top">
-    <a class="navbar-brand" href="{{url_for('dashboard')}}">SHPE | UCI Portal</a>
-    <div class="dropdown">
-        <button 
-            type="button" 
-            class="btn btn-outline-light dropdown-toggle" 
-            data-toggle="dropdown">
-            Hello Frontend Team!
-        </button>
-        <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="#">Portfolio</a>
-            <a class="dropdown-item" href="{{ url_for('settings.settings')}}">Settings</a>
-            <a class="dropdown-item" href="{{ url_for('auth.logout') }}"
-                >Logout</a
-            >
-        </div>
-    </div>
-</nav>
+
+{% from "components.html" import navbar_logged_in with context %}
+{{navbar_logged_in()}}
+
 <div class="container mt-4">
 	<div class="row">
         <div class="col-sm-4">
@@ -81,4 +67,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}

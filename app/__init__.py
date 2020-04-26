@@ -1,11 +1,6 @@
 import os
 
 from flask import Flask, render_template, redirect, url_for
-import click
-from flask.cli import with_appcontext
-
-from .commands import test
-
 from app.routes.auth import login_required
 
 
@@ -17,7 +12,7 @@ def create_app():
     from app.routes import auth, settings
     from app.routes.search import get_all_users
 
-    #Register routes
+    # Register routes
     app.register_blueprint(auth.bp)
     app.register_blueprint(settings.bp)
 
