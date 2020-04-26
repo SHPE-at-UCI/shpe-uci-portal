@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, g
 from app.routes.auth import login_required
 from app.extensions import db
 # from flask_login import current_user
