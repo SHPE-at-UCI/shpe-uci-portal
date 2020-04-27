@@ -10,24 +10,10 @@
 {% endblock %}
 
 {% block content %}
-<nav class="navbar sticky-top">
-    <a class="navbar-brand" href="{{url_for('dashboard')}}">SHPE | UCI Portal</a>
-    <div class="dropdown">
-        <button 
-            type="button" 
-            class="btn btn-outline-light dropdown-toggle" 
-            data-toggle="dropdown">
-            Hello Frontend Team!
-        </button>
-        <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="#">Portfolio</a>
-            <a class="dropdown-item" href="{{ url_for('settings')}}">Settings</a>
-            <a class="dropdown-item" href="{{ url_for('auth.logout') }}"
-                >Logout</a
-            >
-        </div>
-    </div>
-</nav>
+
+{% from "components.html" import navbar_logged_in with context %}
+{{navbar_logged_in()}}
+
 <div class="container mt-4">
 	<div class="row">
         <div class="col-sm-4">
@@ -40,35 +26,35 @@
                 <div class = "form-group">
                     <label class = "control-label col-sm-2" for="first_name">First Name: </label>
                     <div class="col-sm-10"> 
-                        <input name = "first_name" class = "form-control" placeholder="Peter" id = "first_name"/>
+                        <input name = "first_name" class = "form-control" value="{{user['first_name']}}" id = "first_name"/>
                     </div>
                 </div>
 
                 <div class = "form-group">
                     <label class = "control-label col-sm-2" for="last_name">Last Name: </label>
                     <div class="col-sm-10"> 
-                        <input name = "last_name" class="form-control" placeholder="Anteater" id = "last_name"/>
+                        <input name = "last_name" class="form-control" value="{{user['last_name']}}" id = "last_name"/>
                     </div>
                 </div>
 
                 <div class = "form-group">
                     <label class = "control-label col-sm-2" for="email">UCI Email: </label>
                     <div class="col-sm-10"> 
-                        <input name = "email" class="form-control" placeholder="panteaer@uci.edu" id = "email"/>
+                        <input name = "email" class="form-control" value="{{user['email']}}" id = "email"/>
                     </div>
                 </div>
 
                 <div class = "form-group">
                     <label class = "control-label col-sm-2" for="major">Major: </label>
                     <div class="col-sm-10"> 
-                        <input name = "major" class="form-control" placeholder="Software Engineering" id = "major"/>
+                        <input name = "major" class="form-control" value="{{user['major']}}" id = "major"/>
                     </div>
                 </div>
 
                 <div class = "form-group">
                     <label class = "control-label col-sm-2" for="year">Year: </label>
                     <div class="col-sm-10"> 
-                        <input name = "year" class="form-control" placeholder="Junior" id = "year"/>
+                        <input name = "year" class="form-control" value="{{user['year']}}" id = "year"/>
                     </div>
                 </div>
 
@@ -81,4 +67,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}

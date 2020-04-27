@@ -1,11 +1,6 @@
 import os
 
 from flask import Flask, render_template, redirect, url_for, g
-import click
-from flask.cli import with_appcontext
-
-from .commands import test
-
 from app.routes.auth import login_required
 from app.extensions import db
 # from flask_login import current_user
@@ -16,9 +11,12 @@ def create_app():
     app = Flask(__name__)
     app.secret_key = os.getenv("SECRET_KEY")
 
-    from app.routes import auth
+    from app.routes import auth, settings
     from app.routes.search import get_all_users
+
+    # Register routes
     app.register_blueprint(auth.bp)
+    app.register_blueprint(settings.bp)
 
     from app.routes import points
     app.register_blueprint(points.bp)
@@ -50,16 +48,9 @@ def create_app():
         userPoints = userPoints = db.child('points').child(g.user['localId']).get().val()
         return render_template('points.html', points = userPoints)
 
-
     @app.route('/team')
     def team():
         return render_template('/team.html')
-    
-    
-    @app.route('/settings')
-    @login_required
-    def settings():
-        return render_template('settings.html')
 
     @app.route('/search')
     def search():
