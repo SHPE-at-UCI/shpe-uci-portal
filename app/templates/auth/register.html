@@ -1,11 +1,10 @@
 {% extends 'base.html' %} {% block header %}
 
-<h1>
     {% block title %}
     <title>SHPE UCI - Registration</title>
     <link rel="stylesheet" href="../../static/css/register.css"/>
     {% endblock %}
-</h1>
+
 <!-- You can change Register to anything else.-->
 {% endblock %} {% block content %}
 <!-- All your body content goes here! -->
@@ -13,14 +12,14 @@
 {{navbar_logged_out()}}
 
 <div class="form mx-auto" >
-    <div id="registration-form">
+    <div id="registration-form" alt="Max-width 100%">
         <div class="container">
             {% for message in get_flashed_messages() %}
             <div class="flash d-flex justify-content-center">{{ message }}</div>
             {% endfor %} {% block content3 %} {% endblock %}
-          </div>
+        </div>
         <h1 id="Form_name"> SHPE UCI Member Registration</h1>
-        <form method="post">
+        <form method="post" action="/submit">
             <input
                 type="text"
                 name="first_name"
@@ -56,7 +55,7 @@
             name="major" 
             id="major" 
             required 
-         /> <br />
+            /> <br />
             <input 
             type="text" 
             placeholder="Year" 
@@ -65,10 +64,11 @@
             required 
         />
         <br>
+        {{ recaptcha }}
         <input type="submit" value="Register" />
         </form>
         <br>
-        <span>Already have an account? <a href="{{ url_for('auth.login') }}">sign in</a></span>
+        <span>Already have an account? <a href="{{ url_for('auth.login') }}">Sign In</a></span>
     </div>
 </div>
 
