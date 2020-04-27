@@ -1,21 +1,24 @@
 import os
 
-from flask import Flask, render_template, redirect, url_for
-import click
-from flask.cli import with_appcontext
-
-from .commands import test
-
+from flask import Flask, render_template, redirect, url_for, g
 from app.routes.auth import login_required
+from app.extensions import db
+# from flask_login import current_user
 
 def create_app():
     # create and configure the app
     app = Flask(__name__)
     app.secret_key = os.getenv("SECRET_KEY")
 
-    from app.routes import auth
-    app.register_blueprint(auth.bp)
+    from app.routes import auth, settings
+    from app.routes.search import get_all_users, get_user
 
+    # Register routes
+    app.register_blueprint(auth.bp)
+    app.register_blueprint(settings.bp)
+
+    from app.routes import points
+    app.register_blueprint(points.bp)
     # ensure the instance folder exists
     try:
         os.makedirs(app.instance_path)
@@ -34,23 +37,38 @@ def create_app():
     @app.route('/dashboard')
     @login_required
     def dashboard():
-        return render_template('dashboard.html')
+        user = db.child('users').child(g.user['localId']).get().val()               #fetch user information from database
+        userPoints = db.child('points').child(g.user['localId']).get().val()        #fetch user points from database
+        return render_template('dashboard.html', user = user, points = userPoints)  #load the dashboard with the user information
+
+    @app.route('/points')
+    @login_required
+    def points():
+        userPoints = userPoints = db.child('points').child(g.user['localId']).get().val()
+        return render_template('points.html', points = userPoints)
+
+    @app.route('/team')
+    def team():
+        return render_template('/team.html')
 
     @app.route('/portfolio/<ucinet>')
     def portfolio(ucinet):
         print(f"Retrieving Data for {ucinet}")
-        userInfo = extensions.getBasicUserInfo(ucinet)
+        userInfo = get_user(ucinet)
         if userInfo == None:
             return page_not_found("User not found")
-        return render_template('portfolio.html', 
-            firstName = userInfo["first_name"],
-            lastName  = userInfo["last_name"],
-            gradYear  = userInfo["year"],
-            major     = userInfo["major"])
+        return render_template('portfolio.html', userdata=userInfo)
 
     @app.route('/meetteam')
     def meet_team():
         return 'MeetTeam'
+
+    @app.route('/search')
+    def search():
+        users = get_all_users()
+        # for user in users:
+        #     user.print()
+        return render_template('search.html', users=users)
 
     @app.errorhandler(404)
     def page_not_found(error):
