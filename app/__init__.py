@@ -9,12 +9,21 @@ from .commands import test
 from app.routes.auth import login_required
 from app.extensions import db
 # from flask_login import current_user
+from flask_recaptcha import ReCaptcha
 
 
 def create_app():
     # create and configure the app
     app = Flask(__name__)
     app.secret_key = os.getenv("SECRET_KEY")
+
+    app.config.update({
+        'RECAPTCHA_ENABLED': True,
+        'RECAPTCHA_SITE_KEY': os.getenv("GOOGLE_SITE_KEY"),
+        'RECAPTCHA_SECRET_KEY': os.getenv("GOOGLE_SECRET_KEY")
+    })
+    recaptcha = ReCaptcha(app=app)
+    print(recaptcha.is_enabled)
 
     from app.routes import auth
     from app.routes.search import get_all_users
@@ -54,8 +63,8 @@ def create_app():
     @app.route('/team')
     def team():
         return render_template('/team.html')
-    
-    
+
+
     @app.route('/settings')
     @login_required
     def settings():
@@ -71,5 +80,15 @@ def create_app():
     @app.errorhandler(404)
     def page_not_found(error):
         return render_template('/error/404.html', title='404'), 404
+
+    @app.route("/auth/submit", methods=["POST"])
+    def submit():
+        if recaptcha.verify():
+            print("satisfactorily passed the vibe check")
+            pass
+        else:
+            print("did not pass the vibe check")
+            # FAILED
+            pass
 
     return app
