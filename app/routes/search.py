@@ -23,10 +23,8 @@ def get_user(username: str) -> FBUser:
 	fb_user = None
 	for uid in users_dict:
 		if (users_dict[uid]['email'] == username+"@uci.edu"):
-
 			user_info = users_dict[uid]
 			fb_user = FBUser(uid, user_info)
-	print(type(fb_user))
 	return fb_user
 
 

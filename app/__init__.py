@@ -53,7 +53,7 @@ def create_app():
 
     @app.route('/portfolio/<ucinet>')
     def portfolio(ucinet):
-        print(f"Retrieving Data for {ucinet}")
+        #print(f"Retrieving Data for {ucinet}")
         userInfo = get_user(ucinet)
         if userInfo == None:
             return page_not_found("User not found")

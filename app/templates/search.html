@@ -31,7 +31,10 @@
     <div id="results">
         <ul id="user_results">
             {% for user_dict in users %}
-            <li style="display: block"><a href="#">{{ user_dict['first_name'] + ' ' + user_dict['last_name'] }}</a></li>
+            {% set list1 = user_dict['email'].split('@') %}
+            <li style="display: block">
+                <a href="/portfolio/{{list1[0]}}">{{ user_dict['first_name'] + ' ' + user_dict['last_name'] }}</a>
+            </li>
             {% endfor %}
         </ul>
     </div>
