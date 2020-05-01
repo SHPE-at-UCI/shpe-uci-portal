@@ -52,6 +52,7 @@ def create_app():
         return render_template('/team.html')
 
     @app.route('/portfolio/<ucinet>')
+    @login_required
     def portfolio(ucinet):
         #print(f"Retrieving Data for {ucinet}")
         userInfo = get_user(ucinet)
