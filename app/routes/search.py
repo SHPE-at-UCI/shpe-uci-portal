@@ -1,7 +1,3 @@
-from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for
-)
-
 from app.extensions import db, FBUser
 
 
@@ -17,8 +13,3 @@ def get_all_users() -> [dict]:
         # users.append(fb_user)
 
     return users
-
-
-
-
-

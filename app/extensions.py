@@ -1,4 +1,5 @@
-import pyrebase, os
+import pyrebase
+import os
 
 config = {
   "apiKey": os.getenv("API_KEY"),

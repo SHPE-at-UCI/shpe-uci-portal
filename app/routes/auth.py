@@ -2,18 +2,12 @@ import functools
 
 from flask import (Blueprint, flash, g, redirect, render_template, request,
                    session, url_for)
-from werkzeug.security import check_password_hash, generate_password_hash
 
 from app.extensions import auth, db
 import requests.exceptions
 import json
 
-from time import time
-from sys import platform
-
 bp = Blueprint('auth', __name__, url_prefix='/auth')
-
-# Below should go all our routes dealing with Registration / Login / Session / Logout
 
 
 @bp.route('/register', methods=('GET', 'POST'))
@@ -38,27 +32,26 @@ def register():
             else:
                 flash("An error has occurred.")
 
-
         if error is None:
             points = {
-                "fall":0,
-                "winter":0,
-                "spring":0
+                "fall": 0,
+                "winter": 0,
+                "spring": 0
             }
 
             data = {
-                "first_name":request.form['first_name'],
-                "last_name":request.form['last_name'],
-                "email":email,
-                "major":request.form['major'],
-                "year":request.form['year']
+                "first_name": request.form['first_name'],
+                "last_name": request.form['last_name'],
+                "email": email,
+                "major": request.form['major'],
+                "year": request.form['year']
             }
 
             user = auth.sign_in_with_email_and_password(email, password)
 
-            results = db.child("users").child(user["localId"]).set(data)
+            db.child("users").child(user["localId"]).set(data)
 
-            pointsRes = db.child("points").child(user["localId"]).set(points)
+            db.child("points").child(user["localId"]).set(points)
 
             session.clear()
             session['user'] = user
@@ -118,5 +111,6 @@ def login_required(view):
 @bp.route('/logout')
 def logout():
     session.clear()
-    auth.current_user = None #https://github.com/thisbejim/Pyrebase/issues/284
+    # https://github.com/thisbejim/Pyrebase/issues/284
+    auth.current_user = None
     return redirect(url_for('auth.login'))
