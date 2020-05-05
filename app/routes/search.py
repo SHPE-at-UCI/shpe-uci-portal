@@ -18,7 +18,7 @@ def get_user(username: str) -> FBUser:
     users_dict = db.child('users').get().val()
     fb_user = None
     for uid in users_dict:
-		if (users_dict[uid]['email'] == username+"@uci.edu"):
-			user_info = users_dict[uid]
-			fb_user = FBUser(uid, user_info)
-	return fb_user
+        if (users_dict[uid]['email'] == username+"@uci.edu"):
+            user_info = users_dict[uid]
+            fb_user = FBUser(uid, user_info)
+    return fb_user
