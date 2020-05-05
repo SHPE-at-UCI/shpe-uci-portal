@@ -22,8 +22,3 @@ def get_user(username: str) -> FBUser:
 			user_info = users_dict[uid]
 			fb_user = FBUser(uid, user_info)
 	return fb_user
-
-
-
-
-
