@@ -12,6 +12,8 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
+    data = requests.get('https://us-central1-shpe-uci-tech.cloudfunctions.net/majors').text
+    print(data)
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -56,7 +58,7 @@ def register():
             session.clear()
             session['user'] = user
             return redirect(url_for('dashboard'))
-    return render_template('/auth/register.html')
+    return render_template('/auth/register.html', data=data)
 
 
 @bp.route('/login', methods=('GET', 'POST'))
