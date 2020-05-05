@@ -80,11 +80,6 @@ def create_app():
     @app.route("/auth/submit", methods=["POST"])
     def submit():
         if recaptcha.verify():
-            print("satisfactorily passed the vibe check")
-            pass
-        else:
-            print("did not pass the vibe check")
-            # FAILED
-            pass
+            return redirect(url_for('dashboard'))
 
     return app
