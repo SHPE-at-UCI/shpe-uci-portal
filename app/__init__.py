@@ -23,7 +23,6 @@ def create_app():
         'RECAPTCHA_SECRET_KEY': os.getenv("GOOGLE_SECRET_KEY")
     })
     recaptcha = ReCaptcha(app=app)
-    print(recaptcha.is_enabled)
 
     from app.routes import auth
     from app.routes.search import get_all_users
