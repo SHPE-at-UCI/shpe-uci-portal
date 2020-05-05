@@ -96,7 +96,7 @@ def load_logged_in_user():
     the database into ``g.user``."""
     user = session.get("user")
 
-    #print(user)
+    # print(user)
     if user is None:
         g.user = None
     else:
