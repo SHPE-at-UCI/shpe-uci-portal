@@ -8,8 +8,5 @@ python-dotenv==0.10.5
 Werkzeug==0.15.6
 yapf==0.29.0
 pyrebase==3.0.27
-<<<<<<< HEAD
 flask-recaptcha==0.4.2
-=======
 flake8==3.7.9
->>>>>>> master
