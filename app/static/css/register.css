@@ -46,7 +46,6 @@ h1 {
 
 
 input[type=text], input[type=password], input[type=email]{
-    min-width: 35vw;
     width: 500px;
     max-width: 95vw;
     border-radius: 5px;
