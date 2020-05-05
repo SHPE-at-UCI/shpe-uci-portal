@@ -8,12 +8,7 @@
     {% endblock %}
 {% endblock %}
 
-{% from "components.html" import navbar_logged_in with context %}
-
 {% block content %}
-
-<!--Navbar to be displayed to logged in users-->
-{{ navbar_logged_in() }}
 
 <div class="container my-4 py-2 rounded" id="member-banner">
 	<div class="row justify-content-md-left">
@@ -33,7 +28,7 @@
 				<h2>About Me</h2>
 			</div>
 			<div class="row bg-light">
-				<p class="mx-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec nulla quam. 
+				<p class="mx-2"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec nulla quam. 
 				Fusce eu tempus sapien. Quisque ornare nunc ac lacus placerat tincidunt. 
 				Vivamus sem est, condimentum at nulla in, luctus lobortis nulla. Sed aliquam eget nibh in aliquet.
 				Proin facilisis neque ut lectus elementum, ac consequat nisl fringilla. Aliquam nibh metus, 
