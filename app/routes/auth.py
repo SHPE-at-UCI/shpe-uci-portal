@@ -17,6 +17,7 @@ def register():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
+        recaptcha_response = request.form['g-recaptcha-response']
 
         error = None
 
@@ -24,6 +25,8 @@ def register():
             error = 'Email is required.'
         elif not password:
             error = 'Password is required.'
+        elif not recaptcha_response:
+            error = 'Recaptcha verification required'
 
         try:
             user = auth.create_user_with_email_and_password(email, password)
@@ -32,7 +35,7 @@ def register():
             if error == "EMAIL_EXISTS":
                 flash("Email already in use. Please Sign In.")
             else:
-                flash("An error has occurred.")
+                flash(error)
 
         if error is None:
             points = {
@@ -58,6 +61,8 @@ def register():
             session.clear()
             session['user'] = user
             return redirect(url_for('dashboard')) 
+        else:
+            flash(error)
 
     if g.user is not None:
         return redirect(url_for('dashboard'))
