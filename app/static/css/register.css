@@ -47,7 +47,8 @@ h1 {
 
 
 input[type=text], input[type=password], input[type=email]{
-    width: 300px;
+    width: 500px;
+    max-width: 95vw;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     padding: 5px;
@@ -63,7 +64,8 @@ input[type=text], input[type=password], input[type=email]{
   input[type=submit] {
     background: #0071C5;
     color: white;
-    width: 300px;
+    width: 270px;
+    max-width: 95vw;
     padding:5px 15px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
@@ -71,9 +73,8 @@ input[type=text], input[type=password], input[type=email]{
   }
  
 #registration-form {
-        width: 40vw;
-        min-width: 350px;
-        max-width: 90%;
+        width: 575px;
+        max-width: 98vw;
         background: #fff;
         border-radius: 10px;
         overflow: hidden;
