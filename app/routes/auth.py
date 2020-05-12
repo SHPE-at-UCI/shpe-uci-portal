@@ -1,38 +1,62 @@
 import functools
 
 from flask import (Blueprint, flash, g, redirect, render_template, request,
-                   session, url_for)
+                   session, url_for, current_app)
 
 from app.extensions import auth, db
 import requests.exceptions
 import json
+import requests
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
+def verify_recaptcha_token(user_token = None):
+    google_recaptcha_uri = 'https://www.google.com/recaptcha/api/siteverify'
+    if user_token:
+        data = {'secret': current_app.config['RECAPTCHA_SECRET_KEY'], \
+                'response': user_token}
+        post_response = requests.post(google_recaptcha_uri, data)
+        #print(post_response.status_code)
+        #print(post_response)
+        #print(post_response.text)
+        if post_response.status_code == 200:
+            # Convert the response to a dict and return the dict["success"]
+            response_dict = json.loads(post_response.text)
+            #print(response_dict)
+            return response_dict["success"]
+    return False
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
     data = requests.get('https://us-central1-shpe-uci-tech.cloudfunctions.net/majors').text
-    print(data)
+    #print(data)
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
+        recaptcha_response = request.form['g-recaptcha-response']
 
         error = None
+
+        if verify_recaptcha_token(recaptcha_response):
+            print("valid recaptcha")
+        else:
+            error = "Invalid Recaptcha"
+            print("invalid recaptcha")
 
         if not email:
             error = 'Email is required.'
         elif not password:
             error = 'Password is required.'
-
-        try:
-            user = auth.create_user_with_email_and_password(email, password)
-        except requests.exceptions.HTTPError as e:
-            error = json.loads(e.args[1])['error']['message']
-            if error == "EMAIL_EXISTS":
-                flash("Email already in use. Please Sign In.")
-            else:
-                flash("An error has occurred.")
+        
+        if error is None:
+            try:
+                user = auth.create_user_with_email_and_password(email, password)
+            except requests.exceptions.HTTPError as e:
+                error = json.loads(e.args[1])['error']['message']
+                if error == "EMAIL_EXISTS":
+                    flash("Email already in use. Please Sign In.")
+                else:
+                    flash(error)
 
         if error is None:
             points = {
@@ -58,6 +82,8 @@ def register():
             session.clear()
             session['user'] = user
             return redirect(url_for('dashboard')) 
+        else:
+            flash(error)
 
     if g.user is not None:
         return redirect(url_for('dashboard'))

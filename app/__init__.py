@@ -68,7 +68,7 @@ def create_app():
     @login_required
     def settings():
         return render_template('settings.html')
-        
+
     @app.route('/portfolio/<ucinet>')
     @login_required
     def portfolio(ucinet):
@@ -93,9 +93,9 @@ def create_app():
     def page_not_found(error):
         return render_template('/error/404.html', title='404'), 404
 
-    @app.route("/auth/submit", methods=["POST"])
-    def submit():
-        if recaptcha.verify():
-            return redirect(url_for('dashboard'))
+    #@app.route("/auth/submit", methods=["POST"])
+    #def submit():
+        #if recaptcha.verify():
+            #return redirect(url_for('dashboard'))
 
     return app
