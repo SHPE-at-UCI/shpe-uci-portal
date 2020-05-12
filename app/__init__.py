@@ -11,11 +11,12 @@ def create_app():
     app = Flask(__name__)
     app.secret_key = os.getenv("SECRET_KEY")
 
-    app.config.update({
-        'RECAPTCHA_ENABLED': True,
-        'RECAPTCHA_SITE_KEY': os.getenv("GOOGLE_SITE_KEY"),
-        'RECAPTCHA_SECRET_KEY': os.getenv("GOOGLE_SECRET_KEY")
-    })
+    # Configure and Start Google recaptcha
+    app.config.update(
+        RECAPTCHA_ENABLED= True,
+        RECAPTCHA_SITE_KEY= os.getenv("GOOGLE_SITE_KEY"),
+        RECAPTCHA_SECRET_KEY= os.getenv("GOOGLE_SECRET_KEY")
+    )
     recaptcha = ReCaptcha(app=app)
 
     from app.routes import auth, settings
@@ -92,10 +93,5 @@ def create_app():
     @app.errorhandler(404)
     def page_not_found(error):
         return render_template('/error/404.html', title='404'), 404
-
-    #@app.route("/auth/submit", methods=["POST"])
-    #def submit():
-        #if recaptcha.verify():
-            #return redirect(url_for('dashboard'))
 
     return app

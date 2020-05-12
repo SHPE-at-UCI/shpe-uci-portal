@@ -3,7 +3,6 @@
     box-shadow: 0px 0px 20px black;
     color: white;
     /* min-height: 7vh; */
-    width: 100%;
 }
 
 .navbar-brand {
@@ -73,9 +72,8 @@ input[type=text], input[type=password], input[type=email]{
   }
  
 #registration-form {
-        width: 40vw;
-        min-width: 350px;
-        max-width: 90%;
+        width: 575px;
+        max-width: 98vw;
         background: #fff;
         border-radius: 10px;
         overflow: hidden;
