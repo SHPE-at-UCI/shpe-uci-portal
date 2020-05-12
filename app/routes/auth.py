@@ -81,6 +81,7 @@ def register():
 
             session.clear()
             session['user'] = user
+            session['name'] = db.child('users').child(user['localId']).get().val()
             return redirect(url_for('dashboard')) 
         else:
             flash(error)
@@ -108,6 +109,7 @@ def login():
         if error is None:
             session.clear()
             session['user'] = user
+            session['name'] = db.child('users').child(user['localId']).get().val()
             return redirect(url_for('dashboard'))
     if request.method == 'GET':
         if g.user is not None:
@@ -122,12 +124,18 @@ def load_logged_in_user():
     """If a user id is stored in the session, load the user object from
     the database into ``g.user``."""
     user = session.get("user")
+    try:
+        name = session.get('name')['first_name']
+    except:
+        pass
 
     # print(user)
     if user is None:
         g.user = None
+        g.name = None
     else:
         g.user = user
+        g.name = name
     pass
 
 
