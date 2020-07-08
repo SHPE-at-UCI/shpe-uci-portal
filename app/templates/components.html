@@ -17,10 +17,27 @@
             <a class="dropdown-item" href="{{ url_for('settings.settings') }}">Settings</a>
             <a class="dropdown-item" href="{{ url_for('auth.logout') }}"
                 >Logout</a
-            >
+>
         </div>
     </div>
 </nav>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" id="second_nav"> 
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link"  href="#About">About Us</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"  href="#Executive"> Executive board</a>
+        </li>    
+        <li class="nav-item">
+            <a class="nav-link"  href="#Contact"> Contact us</a>
+        </li>    
+        <li class="nav-item">
+            <a class="nav-link" href="#Sponsors">Sponsors</a>
+        </li>
+    </ul>
+</nav>
+
 {% endmacro %}
 
 {% macro navbar_logged_out() %}
