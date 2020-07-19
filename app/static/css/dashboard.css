@@ -7,14 +7,6 @@
     color: gray;
 }
 
-#second_nav {
-    background-color: rgb(136, 139, 136);
-    padding:0px;
-    font-size: 20px;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-  }
   
 a {
     color: white;

@@ -13,7 +13,7 @@
         />
         <script src="https://kit.fontawesome.com/712de52ebe.js" crossorigin="anonymous"></script>
     </head>
-    <body data-spy="scroll">
+    <body>
         <header>
             {% block header %}{% endblock %}
         </header>
@@ -27,7 +27,6 @@
             {{navbar_logged_out()}}
         {% endif %}
         {% block content %} {% endblock %} 
-    </body>
 
         <script
             src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -44,4 +43,5 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"
         ></script>
+    </body>
 </html>
