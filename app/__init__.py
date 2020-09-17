@@ -43,6 +43,11 @@ def create_app():
     def home():
         return render_template('home.html')
 
+    @app.route('/shpe_home')
+    def shpe_home():
+        return render_template('shpe_home.html')
+
+
     @app.route('/dashboard')
     @login_required
     def dashboard():

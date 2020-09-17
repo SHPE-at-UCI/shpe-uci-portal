@@ -1,0 +1,18 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch simple_navbar_ui
+# Your branch is up to date with 'origin/simple_navbar_ui'.
+#
+# Changes to be committed:
+#	new file:   app/static/css/shpe_home.css
+#	new file:   app/templates/shpe_home.html
+#
+# Changes not staged for commit:
+#	modified:   app/__init__.py
+#	modified:   app/static/css/dashboard.css
+#	modified:   app/templates/base.html
+#	modified:   app/templates/components.html
+#	modified:   app/templates/dashboard.html
+#
