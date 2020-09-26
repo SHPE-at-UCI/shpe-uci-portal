@@ -1,5 +1,6 @@
 import os
-from flask import Flask, render_template, redirect, url_for, g, request
+from flask import Flask, render_template, redirect, url_for, g, request, flash
+from werkzeug import secure_filename
 from app.routes.auth import login_required
 from app.extensions import db
 # from flask_login import current_user
@@ -9,7 +10,8 @@ def create_app():
     # create and configure the app
     app = Flask(__name__)
     app.secret_key = os.getenv("SECRET_KEY")
-    app.config["PDF_UPLOADS"] = "pdf_uploads" # Path to save resumes
+    app.config["PDF_UPLOADS"] = "" # Path to save resumes
+    PATH_TO_UPLOAD = app.config["PDF_UPLOADS"]
 
     # Configure and Start Google recaptcha
     app.config.update(
@@ -23,6 +25,7 @@ def create_app():
     from app.routes import auth, settings
     from app.routes.search import get_all_users, get_user
     from app.routes import dashboard
+    from app.routes.dashboard import allowed_file, delete_file
     # Register routes
     app.register_blueprint(auth.bp)
     app.register_blueprint(settings.bp)
@@ -57,16 +60,25 @@ def create_app():
     def dashboard():
         return render_template('dashboard.html')
 
-    @app.route("/upload_pdf", methods=["GET","POST"])
+    @app.route("/dashboard", methods=["GET","POST"])
     def upload():
-        if request.files: 
-            pdf = request.files["pdf_uploader"] # holds pdf file from form
-            pdf.save(os.path.join(app.config["PDF_UPLOADS"], pdf.filename))
-            myfilepath = os.path.join(app.config["PDF_UPLOADS"], pdf.filename)
-            google_drive_auth(myfilepath)
-            return redirect(request.url)
+        if request.method == "POST":
+            print("POST")
+            user_file = request.files['pdf_uploader']
+            if not allowed_file(user_file):
+                print("file will not be uploaded")
+                return redirect(request.url)
+            else:
+                print("File will be uploaded")
+                secure_file = secure_filename(user_file.filename) # holds pdf file from form
+                user_file.save(os.path.join(PATH_TO_UPLOAD, secure_file)) # create variable here path to new pdf
+                myfilepath = os.path.join(PATH_TO_UPLOAD, secure_file) #hold file path for google drive
+                google_drive_auth(myfilepath)
+                delete_file(myfilepath)
 
-        return render_template("upload_pdf.html")
+            return redirect(request.url) #returns url and looks for request object
+
+        return render_template("dashboard.html")
 
     @app.route('/team')
     def team():

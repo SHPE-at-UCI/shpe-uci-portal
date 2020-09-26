@@ -91,11 +91,11 @@
 <div class="container">
 	<div class="row">
         <div class="col-md-12">
-            <form method="POST" action="/upload_pdf" id="pdf-form" enctype="multipart/form-data">
+            <form method="POST" action="/dashboard" id="pdf-form" enctype="multipart/form-data">
                     <div id='calendar'></div>
                 <div class="form-group files">
                     <h2>Upload Your Resume </h2>
-                    <input type="file" class="form-control" name="pdf_uploader">
+                    <input type="file" class="form-control" name="pdf_uploader" accept=".pdf*" required>
                 </div>
                 <button type="submit" value="submit">Submit</button>
             </form>

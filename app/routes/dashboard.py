@@ -9,6 +9,7 @@ import app.__init__
 from flask_recaptcha import ReCaptcha
 
 bp = Blueprint('dashboard', __name__, url_prefix='/dashboard')
+ALLOWED_EXTENSIONS_FOR_FILE_UPLOAD = ["PDF"] #helps check file extension
 
 @bp.route('/')
 def login():
@@ -19,16 +20,17 @@ def login():
     # load the dashboard with the user information
     return render_template('/dashboard.html', user=user, points=userPoints)
 
-#@bp.route("upload-pdf", methods=["GET", "POST"])
-# not working yet
 
-def upload_pdf():   
-    if request.method == "POST":
-        if request.files:
-            pdf = request.files["pdf_uploader"]
+# checks to see if a file is a pdf
+def allowed_file(filename):
+    print(filename)
+    if not "." in filename.filename:
+        return False
+    extension = filename.filename.rsplit(".", 1)[1]
+    if extension.upper() in ALLOWED_EXTENSIONS_FOR_FILE_UPLOAD:
+        return True
+    else:
+        return False
 
-            pdf.save(os.path.join(app.config["PDF_UPLOADS"], pdf.filename))
-
-            return redirect(request.url)
-
-    return "Thank you for putting file"
+def delete_file(filename):
+    os.remove(filename)
