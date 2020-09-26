@@ -95,13 +95,26 @@
                     <div id='calendar'></div>
                 <div class="form-group files">
                     <h2>Upload Your Resume </h2>
-                    <input type="file" class="form-control" name="pdf_uploader" accept=".pdf*" required>
+                    <input id='inputfile' type="file" class="form-control" name="pdf_uploader" accept=".pdf*" required onChange='getoutput()'>
                 </div>
-                <button type="submit" value="submit">Submit</button>
+                <button id="submit_button" type="submit" value="submit" disabled>Submit</button>
             </form>
         </div>
 	</div>
 </div>
-
+<script>
+    function getoutput(){
+        var filePath = inputfile.value;
+        console.log('filepath: ', filePath);
+        var extension = filePath.split('.').pop();
+        console.log('extension: ', extension);
+        if (extension !== "pdf") {
+            alert("wrong extension");
+        }
+        else {
+            document.getElementById("submit_button").disabled = false;
+        }
+    }
+</script>
 
 {% endblock %}
