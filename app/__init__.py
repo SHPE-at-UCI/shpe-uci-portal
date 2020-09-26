@@ -11,7 +11,7 @@ def create_app():
     app = Flask(__name__)
     app.secret_key = os.getenv("SECRET_KEY")
     app.config["PDF_UPLOADS"] = "" # Path to save resumes
-    PATH_TO_UPLOAD = app.config["PDF_UPLOADS"]
+    PATH_TO_UPLOAD = app.config["PDF_UPLOADS"] #constant term
 
     # Configure and Start Google recaptcha
     app.config.update(
@@ -66,10 +66,10 @@ def create_app():
             print("POST")
             user_file = request.files['pdf_uploader']
             if not allowed_file(user_file):
-                print("file will not be uploaded")
+                #print("file will not be uploaded")
                 return redirect(request.url)
             else:
-                print("File will be uploaded")
+                #print("File will be uploaded")
                 secure_file = secure_filename(user_file.filename) # holds pdf file from form
                 user_file.save(os.path.join(PATH_TO_UPLOAD, secure_file)) # create variable here path to new pdf
                 myfilepath = os.path.join(PATH_TO_UPLOAD, secure_file) #hold file path for google drive

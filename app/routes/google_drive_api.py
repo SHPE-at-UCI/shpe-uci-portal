@@ -11,6 +11,7 @@ from apiclient.http import MediaFileUpload
 
 SCOPES = ['https://www.googleapis.com/auth/drive']
 
+# credentials where in same folder
 def google_drive_auth(userfile):
     creds = None
     if os.path.exists('token.pickle'):
@@ -29,7 +30,6 @@ def google_drive_auth(userfile):
     return get_file_in_google_drive(service, userfile)
 
 def get_file_in_google_drive(google_api_call, file_to_upload):
-    print("Prepare to upload")
     # puts a file in google drive only not specific folder
     file_metadata = {
     'name': 'This is name of file that appears on google drive' #this name appears on google drive
