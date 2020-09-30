@@ -23,7 +23,6 @@ def login():
 
 # checks to see if a file is a pdf
 def allowed_file(filename):
-    print(filename)
     if not "." in filename.filename:
         return False
     extension = filename.filename.rsplit(".", 1)[1]

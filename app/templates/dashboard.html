@@ -103,13 +103,14 @@
 	</div>
 </div>
 <script>
+    // checks to see if file is a pdf alerts user if it is not pdf and will not allow user to sumbit a file
     function getoutput(){
         var filePath = inputfile.value;
         console.log('filepath: ', filePath);
         var extension = filePath.split('.').pop();
         console.log('extension: ', extension);
         if (extension !== "pdf") {
-            alert("wrong extension");
+            alert("Wrong extension reupload as pdf");
         }
         else {
             document.getElementById("submit_button").disabled = false;
