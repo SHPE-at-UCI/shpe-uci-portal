@@ -35,7 +35,9 @@ def google_drive_auth(userfile):
 
 def get_file_in_google_drive(google_api_call, file_to_upload):
     # puts a file in google drive only not specific folder
-    user_data = db.child("users").child(g.user['localId']).get().val()
+    user_data = db.child("users").child(g.user['localId']).get().val() 
+    if user_data["resume_id"] != "": #checks to see if a user has a resume already in database
+        update_file(google_api_call, file_to_upload, user_data["resume_id"])
     use_as_filename = user_data['last_name'] + '_' + user_data['first_name']
     file_metadata = {
     'name': use_as_filename, #this name appears on google drive
@@ -47,13 +49,11 @@ def get_file_in_google_drive(google_api_call, file_to_upload):
                                         fields="id").execute()
 
 
-
-# def update_file(service, userfile, id): #works
-#         file_id = id
-#         file_metadata = { #if name is not specified when updating the file it will keep the same name
-#             'parents': '1mC7JhJA4WLp8pT7pb98NNgtSZPzqkGAn' #parent must match parent of folder
-#         }
-#         media = MediaFileUpload("path of file")
-#         service.files().update(body=file_metadata,
-#                                         media_body=media,
-#                                         fileId=file_id).execute()
+def update_file(service, userfile, file_id): #works
+        file_metadata = { #if name is not specified when updating the file it will keep the same name
+            'parents': ''  #put google folder ID inside of quotes to get file in that folder
+        }
+        media = MediaFileUpload(userfile)
+        service.files().update(body=file_metadata,
+                                        media_body=media,
+                                        fileId=file_id).execute()
