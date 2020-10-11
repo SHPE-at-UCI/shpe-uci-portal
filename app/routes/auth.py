@@ -70,7 +70,8 @@ def register():
                 "last_name": request.form['last_name'],
                 "email": email,
                 "major": request.form['major'],
-                "year": request.form['year']
+                "year": request.form['year'],
+                "resume_id": ""
             }
 
             user = auth.sign_in_with_email_and_password(email, password)
@@ -156,3 +157,6 @@ def logout():
     # https://github.com/thisbejim/Pyrebase/issues/284
     auth.current_user = None
     return redirect(url_for('auth.login'))
+
+
+# need to add none default value for file_id
