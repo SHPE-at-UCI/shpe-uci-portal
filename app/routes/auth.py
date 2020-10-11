@@ -71,7 +71,7 @@ def register():
                 "email": email,
                 "major": request.form['major'],
                 "year": request.form['year'],
-                "resume_id": None
+                "resume_id": ""
             }
 
             user = auth.sign_in_with_email_and_password(email, password)
