@@ -10,7 +10,7 @@ def create_app():
     # create and configure the app
     app = Flask(__name__)
     app.secret_key = os.getenv("SECRET_KEY")
-    app.config["PDF_UPLOADS"] = "app./utils/temp" # Path to save resumes
+    app.config["PDF_UPLOADS"] = "./app/utils/temp" # Path to save resumes
     PATH_TO_UPLOAD = app.config["PDF_UPLOADS"] #constant term
 
     # Configure and Start Google recaptcha
