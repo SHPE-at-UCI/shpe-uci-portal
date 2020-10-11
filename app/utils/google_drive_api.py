@@ -13,7 +13,7 @@ from flask import g
 
 
 SCOPES = ['https://www.googleapis.com/auth/drive']
-
+RESUME_FOLDER_ID = "1mC7JhJA4WLp8pT7pb98NNgtSZPzqkGAn"
 # credentials go in same folder as this file
 # file name should be whatever creds is on line 28/29
 def google_drive_auth(userfile):
@@ -26,34 +26,39 @@ def google_drive_auth(userfile):
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'credentials.json', SCOPES)
+                './app/utils/client_id.json', SCOPES)
             creds = flow.run_local_server(port=0)
         with open('token.pickle', 'wb') as token:
             pickle.dump(creds, token)
+    print("got here in google")
     service = build('drive', 'v3', credentials=creds)
     return get_file_in_google_drive(service, userfile)
 
 def get_file_in_google_drive(google_api_call, file_to_upload):
     # puts a file in google drive only not specific folder
+    print("made it to get_file_in_google_drive function")
     user_data = db.child("users").child(g.user['localId']).get().val() 
-    if user_data["resume_id"] != "": #checks to see if a user has a resume already in database
-        update_file(google_api_call, file_to_upload, user_data["resume_id"])
-    use_as_filename = user_data['last_name'] + '_' + user_data['first_name']
-    file_metadata = {
-    'name': use_as_filename, #this name appears on google drive
-    #'parents': [''] #put google folder ID inside of quotes to get file in that folder
-    }
-    media = MediaFileUpload(file_to_upload)
-    file_to_google_drive = google_api_call.files().create(body=file_metadata,
-                                        media_body=media,
-                                        fields="id").execute()
+    print(user_data)
+    if user_data['resume_id'] != '': #checks to see if a user has a resume already in database
+        print("file being updated")
+        update_file(google_api_call, file_to_upload, user_data['resume_id'])
+    else:
+        print("new file created")
+        use_as_filename = user_data['last_name'] + '_' + user_data['first_name']
+        file_metadata = {
+        'name': use_as_filename, #this name appears on google drive
+        'parents': "" #put google folder ID inside of quotes to get file in that folder
+        }
+        media = MediaFileUpload(file_to_upload)
+        file_to_google_drive = google_api_call.files().create(body=file_metadata,
+                                            media_body=media,
+                                            fields="id").execute()
+        print(file_to_google_drive['id'])
+        db.child("users").child(g.user["localId"]).update({"resume_id": file_to_google_drive['id']})
 
 
 def update_file(service, userfile, file_id): #works
-        file_metadata = { #if name is not specified when updating the file it will keep the same name
-            'parents': ''  #put google folder ID inside of quotes to get file in that folder
-        }
+        print("This is the first time i prtin file_id in update the file", file_id)
         media = MediaFileUpload(userfile)
-        service.files().update(body=file_metadata,
-                                        media_body=media,
-                                        fileId=file_id).execute()
+        service.files().update(media_body=media,
+                                fileId=file_id).execute()
