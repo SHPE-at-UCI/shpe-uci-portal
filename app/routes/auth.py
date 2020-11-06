@@ -136,8 +136,7 @@ def load_logged_in_user():
         g.name = None
     else:
         g.user = user
-        g.name = name
-    pass
+        g.name = None
 
 
 def login_required(view):
