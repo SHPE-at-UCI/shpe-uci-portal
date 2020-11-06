@@ -1,6 +1,7 @@
 import pyrebase
 import os
 from urllib.parse import quote
+import json
 
 config = {
   "apiKey": os.getenv("API_KEY"),
@@ -38,3 +39,36 @@ class FBUser:
         print(' - lastname: {}'.format(self.lastname))
         print(' - major: {}'.format(self.major))
         print(' - year: {}\n'.format(self.year))
+
+def promote_user(email:str) -> int:
+    try:
+        users_dict = db.child('users').get().val()
+        user_id = ''
+
+        for id in users_dict:
+            #print(id, users_dict[id]['email'])
+            if users_dict[id]['email'] == email:
+                #print("FOUND USER")
+                user_id = id
+        
+        if user_id == '':
+            return 400
+
+        # gets the whole user on found id key
+        user = db.child('users').child(user_id).get().val()
+
+        # change is_admin value to True
+        user['is_admin'] = 'True'
+
+        # update values of user with new dictionary with 'is_admin' attribute set to 'True'
+        db.child('users').child(user_id).set(user)
+
+
+        return 200
+    except: 
+        return 400
+    
+    
+
+    
+

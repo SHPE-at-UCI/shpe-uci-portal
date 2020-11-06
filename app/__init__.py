@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, url_for, g, request, flash
 from werkzeug import secure_filename
 from app.routes.auth import login_required
 from app.extensions import db
+import app.extensions as app_module
 # from flask_login import current_user
 from flask_recaptcha import ReCaptcha
 
@@ -85,6 +86,8 @@ def create_app():
     @app.route('/portfolio/<ucinet>')
     @login_required
     def portfolio(ucinet):
+        #print("HEYYYYYYY")
+        #print(app_module.promote_user('cuevasra@uci.edu'))
         #print(f"Retrieving Data for {ucinet}")
         userInfo = get_user(ucinet)
         if userInfo == None:
