@@ -15,37 +15,25 @@ Then execute the commands below depending on your system.
 
 You must also have python 3.5 or higher installed on your machine. 
 
-###### Windows
-```
-$ install-windows.bat
-```
 
-If you receive an error when installing this, try the following:
-1. Delete the ```venv``` folder 
-2. Follow the directions [here](https://pycryptodome.readthedocs.io/en/latest/src/installation.html#windows-from-sources-python-3-5-and-newer) to install C++ build tools onto your machine
-3. Run the install-windows.bat script again
+| Windows                         | Linux & Mac:             |
+|:------------------------------- | -------------------------|
+|```$ install-windows.bat ```     | ```$ ./install-linux```  |
 
-###### Linux & Mac
+> _⚠️ Windows Note: If you received an error during the installing script, try the following:_
+> 1. Delete the ```venv``` folder
+> 2. Follow the directions [here](https://pycryptodome.readthedocs.io/en/latest/src/installation.html#windows-from-sources-python-3-5-and-newer) to install C++ build tools onto your machine
+> 3. Run the install-windows.bat script again
 
-```
-$ ./install-linux
-```
 
 #### 2) Run Web App
 
 On the root directory, run the following commands
 
-###### Windows
+| Windows                        | Linux & Mac:             |
+|:-------------------------------| -------------------------|
+|```$ runapp-windows.bat ```     | ```$ ./runapp```  |
 
-```
-$ runapp-windows.bat
-```
-
-###### Linux & Mac
-
-```
-$ ./runapp
-```
 
 ### Contributing
 
