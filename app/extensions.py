@@ -29,6 +29,7 @@ class FBUser:
         self._raw_dict['uid'] = uid
 
     def get_dict(self) -> dict:
+        print (self._raw_dict)
         return self._raw_dict
 
     def print(self):
@@ -38,3 +39,12 @@ class FBUser:
         print(' - lastname: {}'.format(self.lastname))
         print(' - major: {}'.format(self.major))
         print(' - year: {}\n'.format(self.year))
+
+
+class FBQuestion:
+    def __init__(self, qud: str, question_info: dict):
+        self.qid = qid
+#        self.title = question_info['title']
+
+    def print(self):
+        pass

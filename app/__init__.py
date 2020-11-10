@@ -26,10 +26,12 @@ def create_app():
     from app.routes.search import get_all_users, get_user
     from app.routes import dashboard
     from app.routes.dashboard import allowed_file, delete_file
+    from app.routes import faq
     # Register routes
     app.register_blueprint(auth.bp)
     app.register_blueprint(settings.bp)
     app.register_blueprint(dashboard.bp)
+    app.register_blueprint(faq.bp)
 
     from app.routes import points
     app.register_blueprint(points.bp)
@@ -43,6 +45,10 @@ def create_app():
     # There is no need for a homepage.
     def index():
         return redirect(url_for('auth.login'))
+
+    @app.route('/faq')
+    def faq():
+        return render_template('faq.html')
 
     @app.route('/home')
     def home():
