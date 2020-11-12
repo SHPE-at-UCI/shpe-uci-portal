@@ -48,6 +48,10 @@ def create_app():
     def home():
         return render_template('home.html')
 
+    @app.route('/checkout')
+    def checkout():
+        return render_template('checkout.html')
+
     @app.route('/points')
     @login_required
     def points():
