@@ -49,6 +49,7 @@ def create_app():
         return render_template('home.html')
 
     @app.route('/checkout')
+    @login_required
     def checkout():
         return render_template('checkout.html')
 
