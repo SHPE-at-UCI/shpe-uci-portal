@@ -86,10 +86,10 @@ def create_app():
     @app.route('/portfolio/<ucinet>')
     @login_required
     def portfolio(ucinet):
-        #print("HEYYYYYYY")
-        #print(app_module.promote_user('cuevasra@uci.edu'))
         #print(f"Retrieving Data for {ucinet}")
         userInfo = get_user(ucinet)
+        #print(userInfo)
+        #print(app_module.promote_user('cuevasra@uci.edu',userInfo))
         if userInfo == None:
             return page_not_found("User not found")
         return render_template('portfolio.html', userdata=userInfo)

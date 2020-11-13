@@ -26,6 +26,7 @@ class FBUser:
         self.lastname = user_info['last_name']
         self.major = user_info['major']
         self.year = user_info['year']
+        self.is_admin = user_info['is_admin']
         self._raw_dict = user_info.copy()
         self._raw_dict['uid'] = uid
 
@@ -40,8 +41,14 @@ class FBUser:
         print(' - major: {}'.format(self.major))
         print(' - year: {}\n'.format(self.year))
 
-def promote_user(email:str) -> int:
+def promote_user(email:str, user) -> int:
+    #print(email)
+    #print(user.is_admin)
     try:
+        if user.is_admin == 'False':
+            #print("CANNOT PROMOTE USER, CURR USER IS NOT ADMIN")
+            return 400
+
         users_dict = db.child('users').get().val()
         user_id = ''
 
