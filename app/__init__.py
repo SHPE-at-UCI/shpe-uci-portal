@@ -50,9 +50,9 @@ def create_app():
 
 
     #new admin route.
-    @app.route('/admin-route')
+    @app.route('/admin')
     def admin():
-        return render_template('admin-route.html')
+        return render_template('admin.html')
 
     @app.route('/checkout')
     @login_required
