@@ -46,10 +46,6 @@ def create_app():
     def index():
         return redirect(url_for('auth.login'))
 
-    @app.route('/faq')
-    def faq():
-        return render_template('faq.html')
-
     @app.route('/home')
     def home():
         return render_template('home.html')

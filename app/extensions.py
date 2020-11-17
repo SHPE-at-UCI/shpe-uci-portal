@@ -16,7 +16,6 @@ auth = firebase.auth()
 
 db = firebase.database()
 
-
 class FBUser:
     def __init__(self, uid: str, user_info: dict):
         self.uid = uid
