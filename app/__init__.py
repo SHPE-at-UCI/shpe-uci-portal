@@ -48,10 +48,18 @@ def create_app():
     def home():
         return render_template('home.html')
 
+
+    #new admin route.
+    @app.route('/admin')
+    @login_required
+    def admin():
+        return render_template('admin.html')
+
     @app.route('/checkout')
     @login_required
     def checkout():
         return render_template('checkout.html')
+
 
     @app.route('/points')
     @login_required
