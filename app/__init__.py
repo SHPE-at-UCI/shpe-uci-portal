@@ -48,7 +48,7 @@ def create_app():
     def home():
         return render_template('home.html')
 
-    #new admin route
+    #new admin route.
     @app.route('/admin-route')
     def admin():
         return render_template('admin-route.html')
