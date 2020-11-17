@@ -64,7 +64,6 @@ def register():
                 "winter": 0,
                 "spring": 0
             }
-
             data = {
                 "first_name": request.form['first_name'],
                 "last_name": request.form['last_name'],
@@ -72,8 +71,10 @@ def register():
                 "major": request.form['major'],
                 "year": request.form['year'],
                 "resume_id": "",
-                "is_admin": "False"
+                "is_admin": "False",
+                "paid_status": "general"
             }
+
 
             user = auth.sign_in_with_email_and_password(email, password)
 
