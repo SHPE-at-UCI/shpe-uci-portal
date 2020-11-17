@@ -39,6 +39,6 @@ class FBUser:
 
 
 class FBQuestion:
-    def __init__(self, qud: str, question_info: dict):
+    def __init__(self, qid: str, question_info: dict):
         self.qid = qid
 #        self.title = question_info['title']
