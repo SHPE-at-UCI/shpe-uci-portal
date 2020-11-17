@@ -51,6 +51,7 @@ def create_app():
 
     #new admin route.
     @app.route('/admin')
+    @login_required
     def admin():
         return render_template('admin.html')
 
