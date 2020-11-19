@@ -101,9 +101,15 @@ def create_app():
     @app.route('/search')
     def search():
         users = get_all_users()
-        # for user in users:
-        #     user.print()
+        #for user in users:
+        #     print(user)
         return render_template('search.html', users=users)
+
+    @app.route('/reports')
+    def report():
+        users = get_all_users()
+        #print(users)
+        return render_template('reports.html',users=users,current_user=g.user['localId'])
 
     @app.errorhandler(404)
     def page_not_found(error):
