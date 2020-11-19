@@ -12,7 +12,7 @@ def create_app():
     app = Flask(__name__)
     app.secret_key = os.getenv("SECRET_KEY")
     app.config["PDF_UPLOADS"] = "./app/utils/temp" # Path to save resumes
-    PATH_TO_UPLOAD = app.config["PDF_UPLOADS"] #constant term
+    PATH_TO_UPLOAD = app.config["PDF_UPLOADS"] #constant term 
 
     # Configure and Start Google recaptcha
     app.config.update(
@@ -56,7 +56,9 @@ def create_app():
     @app.route('/admin')
     @login_required
     def admin():
-        return render_template('admin.html')
+        users = get_all_users()
+        #print(users)
+        return render_template('admin.html',users=users)
 
     @app.route('/checkout')
     @login_required
@@ -120,11 +122,6 @@ def create_app():
         #     print(user)
         return render_template('search.html', users=users)
 
-    @app.route('/reports')
-    def report():
-        users = get_all_users()
-        #print(users)
-        return render_template('reports.html',users=users,current_user=g.user['localId'])
 
     @app.errorhandler(404)
     def page_not_found(error):
