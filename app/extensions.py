@@ -17,7 +17,6 @@ auth = firebase.auth()
 
 db = firebase.database()
 
-
 class FBUser:
     def __init__(self, uid: str, user_info: dict):
         self.uid = uid
@@ -34,7 +33,6 @@ class FBUser:
         return self._raw_dict
 
     def print(self):
-        print(self.uid)
         print(' - email: {}'.format(self.email))
         print(' - firstname: {}'.format(self.firstname))
         print(' - lastname: {}'.format(self.lastname))
@@ -79,3 +77,8 @@ def promote_user(email:str, user) -> int:
 
     
 
+
+class FBQuestion:
+    def __init__(self, qid: str, question_info: dict):
+        self.qid = qid
+#        self.title = question_info['title']

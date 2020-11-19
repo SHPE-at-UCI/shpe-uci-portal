@@ -27,10 +27,12 @@ def create_app():
     from app.routes.search import get_all_users, get_user
     from app.routes import dashboard
     from app.routes.dashboard import allowed_file, delete_file
+    from app.routes import faq
     # Register routes
     app.register_blueprint(auth.bp)
     app.register_blueprint(settings.bp)
     app.register_blueprint(dashboard.bp)
+    app.register_blueprint(faq.bp)
 
     from app.routes import points
     app.register_blueprint(points.bp)
@@ -48,6 +50,19 @@ def create_app():
     @app.route('/home')
     def home():
         return render_template('home.html')
+
+
+    #new admin route.
+    @app.route('/admin')
+    @login_required
+    def admin():
+        return render_template('admin.html')
+
+    @app.route('/checkout')
+    @login_required
+    def checkout():
+        return render_template('checkout.html')
+
 
     @app.route('/points')
     @login_required
