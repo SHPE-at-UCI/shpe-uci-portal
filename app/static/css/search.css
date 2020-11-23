@@ -23,7 +23,34 @@ body {
 h2 {
     color: #0071C5;
 }
+#cancelFilterButton {
+    display:inline-block;
+    border:0.1em solid #FFFFFF;
+    border-radius:0.12em;
+    background-color:#afafaf;
+    text-align: center;
+    font-weight: bold;
+    color: red;
+}
 
+#filterButton {
+    display:inline-block;
+    border:0.1em solid #FFFFFF;
+    border-radius:0.12em;
+    background-color:#afafaf;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#000000;
+    text-align:center;
+    transition: all 0.2s;
+}
+#filterButton:hover{
+    text-shadow: 0 0 2em rgba(255,255,255,1);
+    color:#FFFFFF;
+    border-color:#FFFFFF;
+}
 
 #search {
     -webkit-tap-highlight-color: transparent;

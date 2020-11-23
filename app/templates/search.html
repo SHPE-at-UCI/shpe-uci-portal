@@ -17,7 +17,11 @@
                 <fieldset>
                     <input onkeyup="filterSearch()" autocomplete="off" autofocus="autofocus" class="query"
                            id="alumni_search" placeholder="Search" type="search">
-                    <p id="searchDescription">Find SHPE | UCI Alumni.</p>
+                    <p style="display:inline-block;" id="searchDescription">Find SHPE |</p>
+                    <div class="btn-group">
+                        <button onclick="filterSearch()" id="cancelFilterButton">X</button>
+                        <button onclick="filterSearch()" id="filterButton">UCI Alumni</button>
+                    </div>
                 </fieldset>
             </form>
         </div>
