@@ -103,6 +103,7 @@ def create_app():
         return render_template('search.html', users=users)
 
     @app.route('/admin_dashboard')
+    @login_required
     def admin_dashboard():
         users = get_all_users()
         return render_template("admin.html", users=users)
