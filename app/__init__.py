@@ -104,7 +104,8 @@ def create_app():
 
     @app.route('/admin_dashboard')
     def admin_dashboard():
-        return render_template("admin.html")
+        users = get_all_users()
+        return render_template("admin.html", users=users)
 
     @app.errorhandler(404)
     def page_not_found(error):
