@@ -15,7 +15,8 @@ bp = Blueprint('faq', __name__, url_prefix='/faq')
 @bp.route('/', methods=['GET'])
 def faq():
     if request.method == 'GET':
-        return render_template('faq/faq.html')
+        questions = getAllQuestions()
+        return render_template('faq/faq.html', questions=questions)
 
 
 @bp.route('/post', methods=['GET', 'POST'])
@@ -29,5 +30,5 @@ def postQuestion():
 @bp.route('/api/questions', methods=['GET'])
 def getAllQuestions():
     if request.method == 'GET':
-        return jsonify(db.child('questions').get().val())
+        return db.child('questions').get().val()
 

@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 <!--Import the <head> from 'base.html'-->
 {% block header %}
-    <title>SHPE UCI - FAQ</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/faq.css') }}"/>
-    {% block title %}
-    {% endblock %}
+<title>SHPE UCI - FAQ</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/faq.css') }}">
+{% block title %}
+{% endblock %}
 {% endblock %}
 
 {% block content %}
@@ -15,14 +15,55 @@
         <div class="col" id="search">
             <form>
                 <fieldset>
-                    <input onkeyup="" autocomplete="off" autofocus="autofocus" class="query"
-                           id="alumni_search" placeholder="Search" type="search">
-                    <p id="searchDescription">Search</p>
+                    <input onkeyup="filterSearch()" autocomplete="off" autofocus="autofocus" class="query"
+                           id="faq_search" placeholder="Search" type="search">
+                    <p id="searchDescription">Search frequently asked questions.</p>
                 </fieldset>
             </form>
         </div>
     </section>
 </div>
+
+<div class="container px-4" id="results-container">
+    <div id="results">
+        <ul id="question_results">
+            {% for question in questions %}
+            <li style="display: block">
+                <a>{{ questions[question]['question'] }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<script>
+function filterSearch() {
+    var questions = {{ questions|tojson }}
+    console.log(questions);
+    var input = document.getElementById("faq_search");
+    
+    var filter = input.value.toUpperCase();
+    
+    var searchDesc = document.getElementById("searchDescription");
+    
+    var ul = document.getElementById("question_results");
+    var li = ul.getElementsByTagName("li");
+    
+    for (i = 0; i < li.length; i++) {
+        var a = li[i].getElementsByTagName("a")[0];
+        var txtValue = a.textContent || a.innerText;
+    
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        }
+        else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+
 
 {% endblock %}
 
