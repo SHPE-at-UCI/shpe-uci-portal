@@ -11,6 +11,10 @@ a {
     color: white;
 }
 
+.resultAnswer {
+    background-color: lightsteelblue;
+}
+
 a:hover {
     color: rgb(255, 170, 59);
 }
