@@ -21,6 +21,21 @@ def create_app():
     )
     recaptcha = ReCaptcha(app=app)
 
+    @app.after_request
+    def add_header(r):
+        """
+        Add headers to:
+            - force latest IE rendering engine or Chrome Frame,
+            - to cache the rendered page for 10 minutes.
+            
+        This prevents browser to cache *.css files
+        """
+        r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+        r.headers["Pragma"] = "no-cache"
+        r.headers["Expires"] = "0"
+        r.headers['Cache-Control'] = 'public, max-age=0'
+        return r
+
     from app.utils.google_drive_api import google_drive_auth # google drive api functions
     from app.routes import auth, settings
     from app.routes.search import get_all_users, get_user

@@ -2,6 +2,7 @@
 <!--Import the <head> from 'base.html'-->
 {% block header %}
 <title>SHPE UCI - FAQ</title>
+<script src="{{ url_for('static', filename='js/faq.js') }}"></script>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/faq.css') }}">
 {% block title %}
 {% endblock %}
@@ -27,10 +28,13 @@
 <div class="container px-4" id="results-container">
     <div id="results">
         <ul id="question_results">
-            {% for question in questions %}
-            <li style="display: block">
-                <a>{{ questions[question]['question'] }}</a>
+            {% for qid in questions %}
+            <li onclick="showAnswer('{{qid}}')" style="display: block">
+                <a>{{ questions[qid]['question'] }}</a>
             </li>
+            <p class="resultAnswer" id="{{qid}}" style="display:none">
+                {{ questions[qid]['answer'] }}
+            </p>
             {% endfor %}
         </ul>
     </div>
