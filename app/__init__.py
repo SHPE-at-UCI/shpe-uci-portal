@@ -70,7 +70,8 @@ def create_app():
     @app.route('/admin')
     @login_required
     def admin():
-        return render_template('admin.html')
+        users = get_all_users()
+        return render_template('admin.html', users=users)
 
     @app.route('/checkout')
     @login_required
