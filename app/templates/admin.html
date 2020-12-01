@@ -15,13 +15,13 @@
 {% endblock %}
 
 {% block content %}
-<!--<div id="notAdmin">
+<div id="notAdmin">
     <h2>Admin Status Not Given</h2>
     <div class="row bg-light">
         <p class="mx-2">Only SHPE admin are allowed to view reports on members. Ask a page adminstrator
             for access if needed.
         </p>
-</div>-->
+</div>
 </div>
 <div id="charts">
     <h2>Year Level</h2>
@@ -31,20 +31,26 @@
     <h2>Membership</h2>
     <div id="membershipChart"></div><br>
 </div>
+<div id="budgetReport">
+    
+</div>
 <script type="text/javascript">
-    //$('#charts').hide();
-    //$('#notAdmin').hide();
+    $('#charts').hide();
+    $('#notAdmin').hide();
+    var uid = '{{uid}}';
     var users = {{users | tojson}};
+    var budget = {{budget | tojson }};
+    //console.log(budget);
 
-    //for (var i = 0; i < users.length;i++){
-    //    if (uid == users[i]['uid']){
-    //        if (users[i]['is_admin']=='True'){
-    //            $('#charts').show();
-    //        }//else{
-    //            $('#notAdmin').show();
-    //        //}
-    //    }
-    //}
+    for (var i = 0; i < users.length;i++){
+        if (uid == users[i]['uid']){
+            if (users[i]['is_admin']=='True'){
+                $('#charts').show();
+            }else{
+                $('#notAdmin').show();
+            }
+        }
+    }
     
     majorsObject = {}
     yearsObject = {}
@@ -122,6 +128,10 @@
         var chart = new google.visualization.PieChart(document.getElementById('membershipChart'));
         chart.draw(data, options);
     }
+
+    var lastyear = [budget['2019-2020'][9], budget['2019-2020'][10], budget['2019-2020'][11], budget['2019-2020'][12], budget['2019-2020'][1], budget['2019-2020'][2],
+    budget['2019-2020'][3], budget['2019-2020'][4], budget['2019-2020'][5],budget['2019-2020'][6], budget['2019-2020'][7], budget['2019-2020'][8]];
+    var thisYear = [budget['2020-2021'][9], budget['2020-2021'][10], budget['2020-2021'][11]];
 
 </script>
 

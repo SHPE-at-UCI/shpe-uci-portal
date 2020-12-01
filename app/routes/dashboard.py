@@ -15,6 +15,7 @@ ALLOWED_EXTENSIONS_FOR_FILE_UPLOAD = ["PDF"] #helps check file extension
 def login():
     # fetch user information from database
     user = db.child('users').child(g.user['localId']).get().val()
+    users = db.child('users').get().val()
     # fetch user points from database
     userPoints = db.child('points').child(g.user['localId']).get().val()
     # load the dashboard with the user information

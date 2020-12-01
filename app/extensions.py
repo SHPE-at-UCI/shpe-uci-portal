@@ -1,7 +1,6 @@
 import pyrebase
 import os
 from urllib.parse import quote
-import json
 
 config = {
   "apiKey": os.getenv("API_KEY"),
