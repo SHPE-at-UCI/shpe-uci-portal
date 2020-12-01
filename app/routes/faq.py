@@ -17,7 +17,8 @@ def faq():
     user = db.child(
             'users').child(g.user['localId']).get().val()
     if request.method == 'GET':
-        return render_template('faq/faq.html', user=user)
+        questions = getAllQuestions()
+        return render_template('faq/faq.html', questions=questions,user = user)
 
 
 @bp.route('/post', methods=['GET', 'POST'])
@@ -31,5 +32,5 @@ def postQuestion():
 @bp.route('/api/questions', methods=['GET'])
 def getAllQuestions():
     if request.method == 'GET':
-        return jsonify(db.child('questions').get().val())
+        return db.child('questions').get().val()
 
