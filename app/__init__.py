@@ -11,7 +11,7 @@ def create_app():
     app = Flask(__name__)
     app.secret_key = os.getenv("SECRET_KEY")
     app.config["PDF_UPLOADS"] = "./app/utils/temp" # Path to save resumes
-    PATH_TO_UPLOAD = app.config["PDF_UPLOADS"] #constant term
+    PATH_TO_UPLOAD = app.config["PDF_UPLOADS"] #constant term 
 
     # Configure and Start Google recaptcha
     app.config.update(
@@ -71,7 +71,10 @@ def create_app():
     @login_required
     def admin():
         users = get_all_users()
-        return render_template('admin.html', users=users)
+        user = db.child(
+            'users').child(g.user['localId']).get().val()
+        budget = db.child('budget').get().val()
+        return render_template('admin.html',users=users, uid = g.user['localId'], user = user, budget=budget)
 
     @app.route('/checkout')
     @login_required
@@ -82,13 +85,18 @@ def create_app():
     @app.route('/points')
     @login_required
     def points():
+        user = db.child(
+            'users').child(g.user['localId']).get().val()
         userPoints = userPoints = db.child(
             'points').child(g.user['localId']).get().val()
-        return render_template('points.html', points=userPoints)
+        return render_template('points.html', points=userPoints, user=user)
 
     @app.route('/dashboard', methods=["GET","POST"])
     @login_required
     def dashboard():
+        user = db.child(
+            'users').child(g.user['localId']).get().val()
+        print(user)
         if request.method == "POST":
             user_file = request.files['pdf_uploader']
             if not allowed_file(user_file): #checks if file is pdf
@@ -102,7 +110,7 @@ def create_app():
 
             return redirect(request.url) #returns url and looks for request object
         # if method is GET then render template
-        return render_template("dashboard.html")
+        return render_template("dashboard.html", user=user)
 
     @app.route('/team')
     def team():
@@ -111,16 +119,21 @@ def create_app():
     @app.route('/settings')
     @login_required
     def settings():
-        return render_template('settings.html')
+        user = db.child(
+            'users').child(g.user['localId']).get().val()
+        return render_template('settings.html',user=user)
 
     @app.route('/portfolio/<ucinet>')
     @login_required
     def portfolio(ucinet):
         #print(f"Retrieving Data for {ucinet}")
         userInfo = get_user(ucinet)
+        user = db.child(
+            'users').child(g.user['localId']).get().val()
+        #print(userInfo)
         if userInfo == None:
             return page_not_found("User not found")
-        return render_template('portfolio.html', userdata=userInfo)
+        return render_template('portfolio.html', userdata=userInfo, user = user)
 
     @app.route('/meetteam')
     def meet_team():
@@ -129,9 +142,13 @@ def create_app():
     @app.route('/search')
     def search():
         users = get_all_users()
-        # for user in users:
-        #     user.print()
-        return render_template('search.html', users=users)
+        user = db.child(
+            'users').child(g.user['localId']).get().val()
+        #for user in users:
+        #     print(user)
+        print(user)
+        return render_template('search.html', users=users, user = user)
+
 
     @app.errorhandler(404)
     def page_not_found(error):

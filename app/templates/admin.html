@@ -1,45 +1,165 @@
-
 {% extends 'base.html' %}
-
-
+<!--Import the <head> from 'base.html'-->
 {% block header %}
-
+    <title>SHPE UCI - Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/portfolio.css') }}"/>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.5.0.min.js"
+    integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+    crossorigin="anonymous"></script>
+    {% block title %}
+    {% endblock %}
 {% endblock %}
+
 {% block content %}
 
-
 <table>
-<thead>
-<tr>
-  <th>email</th>
-  <th>First Name</th>
-  <th>Last Name</th>
-  <th>Admin</th>
-  <th>Major</th>
-  <th>Year</th>
-  <th>Paid Member</th>
-</tr>
-</thead>
-<tbody>
-  <tr>
-  {% for user_dict in users %}
-    <td>{{user_dict["email"]}}</td> 
-    <td>{{user_dict["first_name"]}}</td>
-    <td>{{user_dict["last_name"]}}</td>
-    <td>{{user_dict["is_admin"]}}</td> <!--Make drop down menu have an update button to the each row Utilize ajax-->
-    <td>{{user_dict["major"]}}</td>
-    <td>{{user_dict["year"]}}</td>
-    <td>{{user_dict["paid_status"]}} </td> <!--Make drop down menu-->
-  </tr>
-{% endfor %}
-</tbody>
-</table>
+    <thead>
+    <tr>
+      <th>email</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Admin</th>
+      <th>Major</th>
+      <th>Year</th>
+      <th>Paid Member</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+      {% for user_dict in users %}
+        <td>{{user_dict["email"]}}</td> 
+        <td>{{user_dict["first_name"]}}</td>
+        <td>{{user_dict["last_name"]}}</td>
+        <td>{{user_dict["is_admin"]}}</td> <!--Make drop down menu have an update button to the each row Utilize ajax-->
+        <td>{{user_dict["major"]}}</td>
+        <td>{{user_dict["year"]}}</td>
+        <td>{{user_dict["paid_status"]}} </td> <!--Make drop down menu-->
+      </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+<div id="notAdmin">
+    <h2>Admin Status Not Given</h2>
+    <div class="row bg-light">
+        <p class="mx-2">Only SHPE admin are allowed to view reports on members. Ask a page adminstrator
+            for access if needed.
+        </p>
+</div>
+</div>
+<div id="charts">
+    <h2>Year Level</h2>
+    <div id="yearLevelChart"></div><br>
+    <h2>Majors</h2>
+    <div id="majorsChart"></div><br>
+    <h2>Membership</h2>
+    <div id="membershipChart"></div><br>
+</div>
+<div id="budgetReport">
+    
+</div>
+<script type="text/javascript">
+    $('#charts').hide();
+    $('#notAdmin').hide();
+    var uid = '{{uid}}';
+    var users = {{users | tojson}};
+    var budget = {{budget | tojson }};
+    //console.log(budget);
+
+    for (var i = 0; i < users.length;i++){
+        if (uid == users[i]['uid']){
+            if (users[i]['is_admin']=='True'){
+                $('#charts').show();
+            }else{
+                $('#notAdmin').show();
+            }
+        }
+    }
+    
+    majorsObject = {}
+    yearsObject = {}
+    membershipsObject = {}
+
+    for (var i = 0; i < users.length;i++){
+        var currMajor= users[i]['major'];
+        if (currMajor in majorsObject){
+            majorsObject[currMajor] += 1
+        } else{
+            majorsObject[currMajor] = 1
+        }
+
+        var currYear= users[i]['year'];
+        if (currYear in yearsObject){
+            yearsObject[currYear] += 1
+        } else{
+            yearsObject[currYear] = 1
+        }
+
+        var currMember= users[i]['paid_status'];
+        if (currMember in membershipsObject){
+            membershipsObject[currMember] += 1
+        } else{
+            membershipsObject[currMember] = 1
+        }
+    }
+
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawMajor);
+    google.charts.setOnLoadCallback(drawYear);
+    google.charts.setOnLoadCallback(drawMemberStatus);
+    var majorArr = [
+        ['Major','Count']
+    ]
+    var yearArr = [
+        ['Year','Count']
+    ]
+    var memberArr =[
+        ['Member Status','Count']
+    ]
+
+    for (key in majorsObject){
+        majorArr.push([key,majorsObject[key]])
+    }
+
+    for (key in yearsObject){
+        yearArr.push([key,yearsObject[key]])
+    }
+
+    for (key in membershipsObject){
+        memberArr.push([key,membershipsObject[key]])
+    }
 
 
+    function drawMajor() {
+        var data = google.visualization.arrayToDataTable(majorArr);
+        var options = {'title':'Majors in SHPE', 'width':600, 'height':600};
 
-<script>
+        var chart = new google.visualization.PieChart(document.getElementById('yearLevelChart'));
+        chart.draw(data, options);
+    }
+
+    function drawYear() {
+        var data = google.visualization.arrayToDataTable(yearArr);
+        var options = {'title':'Class Levels in SHPE', 'width':600, 'height':600};
+
+        var chart = new google.visualization.PieChart(document.getElementById('majorsChart'));
+        chart.draw(data, options);
+    }
+    function drawMemberStatus() {
+        var data = google.visualization.arrayToDataTable(memberArr);
+        var options = {'title':'Membership Status', 'width':600, 'height':600};
+
+        var chart = new google.visualization.PieChart(document.getElementById('membershipChart'));
+        chart.draw(data, options);
+    }
+
+    var lastyear = [budget['2019-2020'][9], budget['2019-2020'][10], budget['2019-2020'][11], budget['2019-2020'][12], budget['2019-2020'][1], budget['2019-2020'][2],
+    budget['2019-2020'][3], budget['2019-2020'][4], budget['2019-2020'][5],budget['2019-2020'][6], budget['2019-2020'][7], budget['2019-2020'][8]];
+    var thisYear = [budget['2020-2021'][9], budget['2020-2021'][10], budget['2020-2021'][11]];
 
 </script>
 
 {% endblock %}
-

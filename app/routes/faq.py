@@ -14,9 +14,11 @@ bp = Blueprint('faq', __name__, url_prefix='/faq')
 # the questions in the database
 @bp.route('/', methods=['GET'])
 def faq():
+    user = db.child(
+            'users').child(g.user['localId']).get().val()
     if request.method == 'GET':
         questions = getAllQuestions()
-        return render_template('faq/faq.html', questions=questions)
+        return render_template('faq/faq.html', questions=questions,user = user)
 
 
 @bp.route('/post', methods=['GET', 'POST'])
