@@ -71,11 +71,6 @@ def promote_user(email:str, user) -> int:
         return 200
     except: 
         return 400
-    
-    
-
-    
-
 
 class FBQuestion:
     def __init__(self, qid: str, question_info: dict):
