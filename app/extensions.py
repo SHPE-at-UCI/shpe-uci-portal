@@ -1,4 +1,4 @@
-import pyrebase
+from app.pyrebase import pyrebase
 import os
 from urllib.parse import quote
 
@@ -19,12 +19,12 @@ db = firebase.database()
 class FBUser:
     def __init__(self, uid: str, user_info: dict):
         self.uid = uid
-        self.email = user_info['email']
-        self.firstname = user_info['first_name']
-        self.lastname = user_info['last_name']
-        self.major = user_info['major']
-        self.year = user_info['year']
-        self.is_admin = user_info['is_admin']
+        self.email = user_info.get("email")
+        self.firstname = user_info.get("first_name")
+        self.lastname = user_info.get("last_name")
+        self.major = user_info.get("major")
+        self.year = user_info.get("year")
+        self.is_admin = user_info.get("is_admin")
         self._raw_dict = user_info.copy()
         self._raw_dict['uid'] = uid
 

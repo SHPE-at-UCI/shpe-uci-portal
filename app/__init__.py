@@ -96,7 +96,7 @@ def create_app():
     def dashboard():
         user = db.child(
             'users').child(g.user['localId']).get().val()
-        print(user)
+
         if request.method == "POST":
             user_file = request.files['pdf_uploader']
             if not allowed_file(user_file): #checks if file is pdf
@@ -142,12 +142,10 @@ def create_app():
     @app.route('/search')
     def search():
         users = get_all_users()
-        user = db.child(
-            'users').child(g.user['localId']).get().val()
-        #for user in users:
-        #     print(user)
-        print(user)
-        return render_template('search.html', users=users, user = user)
+        # users = [ (u.email, u.firstname, u.lastname) for u in fb_users if u.email != None]
+        user = db.child('users').child(g.user['localId']).get().val()
+        
+        return render_template('search.html', users=users, user=user)
 
 
     @app.errorhandler(404)

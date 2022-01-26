@@ -1,4 +1,7 @@
+# REQUIRED BY THE GOOGLE IMPORTS
 requests==2.18.0
+
+# REQUIRED BY FLASK APP
 Click==7.0
 Flask==1.1.1
 gunicorn==19.9.0
@@ -8,7 +11,6 @@ MarkupSafe==1.1.1
 python-dotenv==0.10.5
 Werkzeug==0.15.6
 yapf==0.29.0
-pyrebase==3.0.27
 flask-recaptcha==0.4.2
 flake8==3.7.9
 pytest==5.4.1
@@ -18,3 +20,10 @@ google-auth==1.21.2
 google-auth-httplib2==0.0.4
 google-auth-oauthlib==0.4.1
 googleapis-common-protos==1.51.0
+
+# REQUIRED BY THE PYREBASE MODULE FOLDER
+gcloud==0.17.0
+oauth2client==3.0.0
+requests-toolbelt==0.7.0
+python-jwt==2.0.1
+pycrypto==2.6.1
