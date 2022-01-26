@@ -1,5 +1,5 @@
 # REQUIRED BY THE GOOGLE IMPORTS
-requests==2.18.0
+requests==2.20.0
 
 # REQUIRED BY FLASK APP
 Click==7.0
